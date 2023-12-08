@@ -3,9 +3,9 @@ import Image from 'next/image';
 import logoUrl from '@/assets/images/logo.png';
 import MenuIcon from '@/assets/icons/MenuIcon';
 
-const styles = {
+const styles: Record<string, React.CSSProperties> = {
     header: {
-        position: 'fixed',
+        position: 'fixed' as 'fixed' | 'absolute' | 'fixed' | 'static' | 'inherit' | 'initial' | 'unset',
         top: 0,
         left: 0,
         display: 'flex',
@@ -35,11 +35,11 @@ const styles = {
     },
     smallContainer: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column' | 'row',
         marginLeft: '1rem',
     },
     smallText: {
-        textAlign: 'center',
+        textAlign: 'center' as 'center' | 'left' | 'right' | 'justify' | 'initial' | 'inherit',
         letterSpacing: '0.1rem',
         wordSpacing: '0.2rem',
     },

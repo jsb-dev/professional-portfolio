@@ -1,35 +1,57 @@
 import React from 'react';
 import Image from 'next/image';
 import logoUrl from '@/assets/images/logo.png';
+import { center } from '@/styles/shared';
 
-const styles = {
-    container: {
-        width: '99dvw',
-        height: 'max(90dvh, 400px)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
+const styles: Record<string, React.CSSProperties> = {
+    sectionCntnr: {
+        ...center,
+        width: '100%',
+        minHeight: 350,
+    },
+    headerCntnr: {
+        ...center,
     },
     logo: {
-        width: 'min(80%, 600px)',
         margin: '2rem',
     },
     header: {
-        margin: '2rem',
+        margin: '.5rem 5rem',
+        fontSize: '14pt',
+        textAlign: 'center' as 'center',
+        letterSpacing: '0.3rem',
     }
 }
 
 interface WelcomeSectionProps {
-    viewportIsVertical: boolean;
     viewportIsPortable: boolean;
 }
 
-const WelcomeSection: React.FC<WelcomeSectionProps> = ({ viewportIsPortable, viewportIsVertical }) => {
+const WelcomeSection: React.FC<WelcomeSectionProps> = ({ viewportIsPortable }) => {
+
+    const sectionCntnrStyle = {
+        ...styles.sectionCntnr,
+        height: viewportIsPortable ? '60dvh' : '65dvh',
+    }
+
+    const logoStyle = {
+        ...styles.logo,
+        width: viewportIsPortable ? '100%' : '40%',
+    }
+
+    const headerCntnrStyle = {
+        ...styles.headerCntnr,
+        flexDirection: viewportIsPortable ? 'column' : 'row' as 'column' | 'row',
+    }
+
     return (
-        <section style={styles.container}>
-            <Image src={logoUrl} alt="Logo" style={styles.logo} />
-            <h1 style={styles.header}>Welcome</h1>
+        <section style={sectionCntnrStyle}>
+            <Image src={logoUrl} alt="Logo" style={logoStyle} />
+            <div style={headerCntnrStyle}>
+                <h2 style={styles.header}>Efficient</h2>
+                <h2 style={styles.header}>Effective</h2>
+                <h2 style={styles.header}>Creative</h2>
+            </div>
         </section>
     );
 }
