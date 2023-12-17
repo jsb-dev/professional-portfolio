@@ -52,13 +52,13 @@ const styles: Record<string, React.CSSProperties> = {
 }
 
 interface ProjectCardProps {
-    imageUrl: string;
+    img: string;
     description: string;
     projectName: string;
     projectLink: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ imageUrl, description, projectName, projectLink }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName, projectLink }) => {
     const [view, setView] = useState<'image' | 'description'>('image');
 
     const toggleView = () => {
@@ -84,7 +84,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ imageUrl, description, projec
                 Toggle View
             </button>
             <Image
-                src={imageUrl}
+                src={img}
                 alt={projectName}
                 style={imgStyle}
             />

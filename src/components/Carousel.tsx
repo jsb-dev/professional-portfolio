@@ -23,7 +23,7 @@ const styles: Record<string, React.CSSProperties> = {
         position: 'absolute',
         right: 0,
         zIndex: 1
-    }
+    },
 };
 
 const Carousel = () => {
