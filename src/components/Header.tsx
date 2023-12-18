@@ -16,9 +16,10 @@ const styles: Record<string, React.CSSProperties> = {
         alignItems: 'center',
         height: '80px',
         width: '100%',
-        backgroundColor: 'rgba(0,0,0,0.8)',
+        backgroundColor: 'rgba(0,0,0,0.9)',
         color: '#ffffff',
-        boxShadow: '0 0 2rem 1rem rgba(94, 103, 128, 0.8)',
+        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
+        boxShadow: 'inset 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.3)',
         borderBottomLeftRadius: '1rem',
         borderBottomRightRadius: '1rem',
     },
@@ -35,6 +36,7 @@ const styles: Record<string, React.CSSProperties> = {
     },
     logoImg: {
         width: '80px',
+        height: 'auto',
     },
     smallContainer: {
         display: 'flex',
@@ -68,7 +70,7 @@ const Header: React.FC = () => {
         <header style={styles.header}>
             <div style={styles.container}>
                 <div style={styles.logoContainer}>
-                    <Image src={logoUrl} alt="JSB-DEV Logo" style={styles.logoImg} />
+                    <Image src={logoUrl} alt="Logo" style={styles.logoImg} />
                     <div style={styles.smallContainer}>
                         {!viewportIsVertical && (
                             <>

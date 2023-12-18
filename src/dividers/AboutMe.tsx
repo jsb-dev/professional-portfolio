@@ -6,15 +6,15 @@ const styles: Record<string, React.CSSProperties> = {
         ...center,
         width: '100%',
         height: '25dvh',
-    },
-
-    headerCntnr: {
-        ...center,
+        marginBottom: 0,
+        paddingBottom: 0,
     },
 
     header: {
         fontSize: '18pt',
         fontWeight: 600,
+        width: '100%',
+        textAlign: 'center' as 'center',
     }
 }
 
@@ -23,9 +23,7 @@ const WelcomeSection: React.FC = () => {
 
     return (
         <section style={styles.sectionCntnr}>
-            <div style={styles.headerCntnr}>
-                <h2 style={styles.header}>ABOUT ME</h2>
-            </div>
+            <h2 style={styles.header}>ABOUT ME</h2>
         </section>
     );
 }

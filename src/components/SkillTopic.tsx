@@ -1,4 +1,5 @@
 import React from 'react';
+import { center } from '@/styles/shared';
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 

@@ -21,14 +21,14 @@ const styledBtn: React.CSSProperties = {
 const styles: Record<string, React.CSSProperties> = {
     cardCntnr: {
         ...center,
-        height: 400,
+        height: 350,
         maxHeight: '65dvh',
         minWidth: '220px',
         maxWidth: '600px',
         width: '500px',
         backgroundColor,
         position: 'relative',
-        margin: '1rem',
+        margin: '0.5rem',
         overflow: 'hidden',
         borderRadius: '.5rem',
         transition: 'box-shadow 0.4s ease-in-out',
@@ -58,7 +58,8 @@ const styles: Record<string, React.CSSProperties> = {
     },
 
     img: {
-        width: '80%',
+        width: '70%',
+        height: 'auto',
         objectFit: 'cover',
         position: 'relative',
     },
@@ -73,15 +74,9 @@ const styles: Record<string, React.CSSProperties> = {
         padding: '1.5rem 0.5rem',
     },
 
-    descCntnr: {
-        width: '100%',
-        overflowY: 'scroll',
-        overflowX: 'hidden',
-    },
-
     paragraph: {
         color: 'white',
-        padding: '1rem 1rem',
+        padding: '2rem 1.5rem',
         fontSize: '11pt',
         textAlign: 'right',
     },

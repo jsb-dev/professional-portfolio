@@ -19,6 +19,8 @@ const styles: Record<string, React.CSSProperties> = {
 
     logo: {
         margin: '2rem',
+        width: '40%',
+        height: 'auto',
     },
 
     header: {

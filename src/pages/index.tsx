@@ -28,7 +28,8 @@ const styles: Record<string, React.CSSProperties> = {
         overflow: 'hidden',
     },
     largeDivider: {
-        marginBottom: '5rem',
+        margin: '0 0 2rem 0',
+        padding: 0,
     },
 }
 
@@ -52,16 +53,11 @@ const AboutPage: React.FC = () => {
             <Image src={bgImg} alt="Background image" style={styles.bgImg} priority />
             <Header />
             <div style={styles.largeDivider} />
-            <WelcomeSection />
-            <div style={styles.sectionCntnr}>
-                <ProjectSection />
-            </div>
-            <AboutMe />
-            <ProfileSection />
-            <Skills />
-            <div style={styles.sectionCntnr}>
-                <SkillsSection />
-            </div>
+            <div style={styles.sectionCntnr}><WelcomeSection /></div>
+            <div style={styles.sectionCntnr}><ProjectSection /></div>
+            <div style={styles.sectionCntnr}><ProfileSection /></div>
+            <div style={styles.sectionCntnr}><Skills /></div>
+            <div style={styles.sectionCntnr}><SkillsSection /></div>
         </div>
     );
 };

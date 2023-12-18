@@ -9,25 +9,24 @@ const styles: Record<string, React.CSSProperties> = {
     profileCntnr: {
         display: 'flex',
         alignItems: 'center',
-        boxShadow: '0 0 3rem .25rem rgba(255, 255, 255, 0.2), inset 0 0 2rem 1rem rgba(0, 0, 0, 0.7)',
-        backgroundColor: 'rgba(43, 42, 43, .7)',
-        borderRadius: '1rem',
+        boxShadow: '0 0 3rem .25rem rgba(255, 255, 255, 0.1), inset 0 0 2rem 1rem rgba(0, 0, 0, 0.7)',
+        borderRadius: '.5rem',
+        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
         textAlign: 'center' as 'center',
-        width: 'min(90dvw, 600px)',
+        width: 'min(85dvw, 600px)',
         minHeight,
         padding: 0,
     },
 
     imgCntnr: {
         ...center,
-        backgroundColor: 'rgba(53, 47, 59, .6)',
-        borderRadius: '1rem',
+        backgroundColor: 'rgba(50, 44, 50, .8)',
     },
 
     profileImg: {
         borderRadius: '50%',
-        boxShadow: '0 0 5rem 0.1rem rgba(94, 103, 128, 0.8)',
-        objectFit: 'cover' as 'cover',
+        height: 'auto',
+        padding: '1rem',
     },
 
     profileHeader: {
@@ -54,12 +53,11 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
 
     const imgStyle = {
         ...styles.profileImg,
-        width: viewportIsPortable ? '70%' : '80%',
-        height: viewportIsPortable ? '70%' : '80%',
+        width: viewportIsPortable ? '50%' : '80%',
     }
 
     const orientation = {
-        width: viewportIsPortable ? '100%' : '50%',
+        width: viewportIsPortable ? '90%' : '50%',
         minHeight: viewportIsPortable ? '' : minHeight,
         padding: viewportIsPortable ? '1rem' : '',
     }

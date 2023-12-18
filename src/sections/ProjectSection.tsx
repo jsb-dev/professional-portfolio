@@ -6,7 +6,8 @@ const styles: Record<string, React.CSSProperties> = {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         border: '0.1rem solid rgba(255, 255, 255, 0.3)',
         borderRadius: '.5rem',
-        width: '98%',
+        width: '94%',
+        padding: 0,
     },
 
     carouselCntnr: {
