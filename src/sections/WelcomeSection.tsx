@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import logoUrl from '@/assets/images/logo.png';
 import { center } from '@/styles/shared';
 
@@ -23,11 +25,9 @@ const styles: Record<string, React.CSSProperties> = {
     }
 }
 
-interface WelcomeSectionProps {
-    viewportIsPortable: boolean;
-}
 
-const WelcomeSection: React.FC<WelcomeSectionProps> = ({ viewportIsPortable }) => {
+const WelcomeSection: React.FC = () => {
+    const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
 
     const sectionCntnrStyle = {
         ...styles.sectionCntnr,

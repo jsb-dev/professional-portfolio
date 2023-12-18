@@ -1,69 +1,36 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import ProjectCard from './ProjectCard';
+import projects from '@/assets/content/projectContent';
 
 const styles: Record<string, React.CSSProperties> = {
     carouselCntnr: {
-        overflowX: 'hidden',
-        position: 'relative'
+        position: 'relative',
     },
 
     carousel: {
         display: 'flex',
-        overflowX: 'auto',
-        scrollSnapType: 'x mandatory'
-    },
-
-    leftBtn: {
-        position: 'absolute',
-        left: 0,
-        zIndex: 1
-    },
-
-    rightBtn: {
-        position: 'absolute',
-        right: 0,
-        zIndex: 1
+        overflowX: 'scroll',
+        overflowY: 'hidden',
+        scrollSnapType: 'x mandatory',
+        padding: '1rem 0',
     },
 };
 
-const Carousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carouselRef = useRef<HTMLDivElement>(null);
-
-    const handleArrowClick = (direction: 'left' | 'right') => {
-        if (!carouselRef.current) return;
-
-        const scrollAmount = carouselRef.current.offsetWidth;;
-        const scrollTo = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
-
-        carouselRef.current.scrollTo({
-            left: scrollAmount * scrollTo,
-            behavior: 'smooth'
-        });
-
-        setCurrentIndex(scrollTo);
-    };
+const Carousel: React.FC = () => {
 
     return (
         <div style={styles.carouselCntnr}>
-            <div
-                ref={carouselRef}
-                style={styles.carousel}
-            >
-                {/* Cards go here */}
+            <div style={styles.carousel}>
+                {projects.map((project, index) => (
+                    <ProjectCard
+                        key={index}
+                        img={project.img}
+                        description={project.description}
+                        projectName={project.projectName}
+                        projectLink={project.projectLink}
+                    />
+                ))}
             </div>
-            <button
-                onClick={() => handleArrowClick('left')}
-                style={styles.leftBtn}
-            >
-                {'<'}
-            </button>
-            <button
-                onClick={() => handleArrowClick('right')}
-                style={styles.rightBtn}
-            >
-                {'>'}
-            </button>
         </div>
     );
 };

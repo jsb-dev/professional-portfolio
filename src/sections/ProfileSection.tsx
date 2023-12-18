@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import ProfileCard from '@/components/ProfileCard';
 import { center } from '@/styles/shared';
 
@@ -19,14 +21,13 @@ const styles: Record<string, React.CSSProperties> = {
     }
 }
 
-interface ProfileCardProps {
-    viewportIsPortable: boolean;
-}
 
-const ProfileSection: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
+const ProfileSection: React.FC = () => {
+    const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
+
     const sectionCntnrStyles = {
         ...styles.sectionCntnr,
-        flexDirection: viewportIsPortable ? 'column' : 'row' as 'column' | 'row',
+        flexDirection: viewportIsPortable ? 'column' : 'row-reverse' as 'column' | 'row-reverse',
     }
 
     const cardCntnrStyles = {
@@ -37,7 +38,7 @@ const ProfileSection: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     const contentCntnr = {
         ...styles.contentCntnr,
         width: viewportIsPortable ? '100%' : '50%',
-        padding: viewportIsPortable ? '0 1rem' : '0 0 0 5rem'
+        padding: viewportIsPortable ? '0 1rem' : '0 5rem 0'
     }
 
     return (

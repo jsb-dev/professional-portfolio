@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import SkillTopic from '@/components/SkillTopic';
 import breakdown from '@/assets/svg/breakdown.svg';
 import analytical from '@/assets/svg/analytical.svg';
@@ -14,11 +16,9 @@ const styles: Record<string, React.CSSProperties> = {
     },
 };
 
-interface SkillsSectionProps {
-    viewportIsPortable: boolean;
-}
+const SkillsSection: React.FC = () => {
+    const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
 
-const SkillsSection: React.FC<SkillsSectionProps> = ({ viewportIsPortable }) => {
     return (
         <section>
             <h2 style={styles.header}>What will I bring to your team?</h2>

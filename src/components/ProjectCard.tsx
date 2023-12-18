@@ -1,58 +1,92 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import { StaticImageData } from 'next/image';
+import { center, btn } from '@/styles/shared';
+
+const backgroundColor = 'rgba(0, 0, 0, 0.5)';
+
+const styledBtn: React.CSSProperties = {
+    ...btn,
+    position: 'absolute',
+    width: 50,
+    margin: '1rem',
+}
 
 const styles: Record<string, React.CSSProperties> = {
     cardCntnr: {
-        height: '80vh',
-        width: '400px',
-        maxWidth: '90vw',
+        ...center,
+        height: '70dvh',
+        minWidth: '220px',
+        maxWidth: '600px',
+        width: '500px',
+        backgroundColor,
+        position: 'relative',
+        margin: '1rem',
+        overflow: 'hidden',
     },
 
     toggleBtn: {
-        position: 'absolute',
+        ...styledBtn,
         top: 0,
         left: 0,
-        zIndex: 2
+        zIndex: 1,
+    },
+
+    visitBtn: {
+        ...styledBtn,
+        bottom: 0,
+        right: 0,
+        zIndex: 1,
     },
 
     img: {
-        width: '100%',
-        height: '100%',
+        width: '80%',
         objectFit: 'cover',
+        position: 'relative',
     },
 
     descBg: {
+        ...center,
         position: 'absolute',
         top: 0,
         left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        zIndex: 1
+        zIndex: 1,
+        backgroundColor,
+        width: '100%',
+        height: '100%',
+        padding: '10rem 1rem',
+    },
+
+    descCntnr: {
+        width: '100%',
+        overflowY: 'scroll',
+        overflowX: 'hidden',
     },
 
     paragraph: {
         color: 'white',
-        padding: '1rem'
+        padding: '1rem 1rem',
+        fontSize: '11pt',
     },
 
-    nameCntnr: {
+    h2: {
+        textAlign: 'left',
         position: 'absolute',
         bottom: 0,
-        left: 0,
-        zIndex: 2,
+        left: '1rem',
+        fontSize: '18pt',
+        zIndex: 1,
+        textTransform: 'uppercase',
+        letterSpacing: '0.3rem',
+        lineHeight: '2.5rem',
+        textShadow: '0.3rem 0.3rem 0.1rem black',
     },
-
-    anchor: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        zIndex: 2
-    }
 }
 
 interface ProjectCardProps {
-    img: string;
+    img: StaticImageData;
     description: string;
     projectName: string;
     projectLink: string;
@@ -60,6 +94,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName, projectLink }) => {
     const [view, setView] = useState<'image' | 'description'>('image');
+    const { viewportIsPortable, viewportIsVertical } = useSelector((state: RootState) => state.ui);
 
     const toggleView = () => {
         setView(view === 'image' ? 'description' : 'image');
@@ -67,42 +102,53 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
 
     const imgStyle = {
         ...styles.img,
-        display: view === 'image' ? 'block' : 'none'
+        display: 'block',
+        zIndex: 0,
     }
 
-    const nameCntnrStyle = {
+    const descCntnrStyle = {
         ...styles.nameCntnr,
         color: view === 'image' ? 'black' : 'transparent'
     }
 
     return (
         <div style={styles.cardCntnr}>
-            <button
-                style={styles.toggleBtn}
-                onClick={toggleView}
-            >
-                Toggle View
-            </button>
-            <Image
-                src={img}
-                alt={projectName}
-                style={imgStyle}
-            />
+            {view === 'image' && (
+                <>
+                    {((viewportIsPortable && viewportIsVertical) || (!viewportIsPortable)) && (<button
+                        style={styles.toggleBtn}
+                        onClick={toggleView}
+                    >
+                        Tgl
+                    </button>)}
+                    <Image
+                        src={img}
+                        alt={projectName}
+                        style={imgStyle}
+                    />
+                    {(!viewportIsPortable && !viewportIsVertical) && (<h2 style={styles.h2}>{projectName}</h2>)}
+                </>
+            )}
             {view === 'description' && (
                 <div style={styles.descBg}>
-                    <p style={styles.paragraph}>{description}</p>
+                    <button
+                        style={styles.toggleBtn}
+                        onClick={toggleView}
+                    >
+                        Tgl
+                    </button>
+                    <div style={descCntnrStyle}>
+                        {!viewportIsPortable && (<h2>{projectName}</h2>)}
+                        <p style={styles.paragraph}>{description}</p>
+                    </div>
                 </div>
             )}
-            <div style={nameCntnrStyle}>
-                {projectName}
-            </div>
             <a
                 href={projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={styles.anchor}
             >
-                <button>Visit</button>
+                <button style={styles.visitBtn}>Vst</button>
             </a>
         </div>
     );

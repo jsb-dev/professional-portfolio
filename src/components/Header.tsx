@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import Image from 'next/image';
 import logoUrl from '@/assets/images/logo.png';
 import MenuIcon from '@/assets/icons/MenuIcon';
@@ -8,6 +10,7 @@ const styles: Record<string, React.CSSProperties> = {
         position: 'fixed' as 'fixed' | 'absolute' | 'fixed' | 'static' | 'inherit' | 'initial' | 'unset',
         top: 0,
         left: 0,
+        zIndex: 3,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -57,11 +60,10 @@ const styles: Record<string, React.CSSProperties> = {
     }
 };
 
-interface HeaderProps {
-    viewportIsVertical: boolean;
-}
+const Header: React.FC = () => {
+    const { viewportIsVertical } = useSelector((state: RootState) => state.ui);
 
-const Header: React.FC<HeaderProps> = ({ viewportIsVertical }) => {
+
     return (
         <header style={styles.header}>
             <div style={styles.container}>
