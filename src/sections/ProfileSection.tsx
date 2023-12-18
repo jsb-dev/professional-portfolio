@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import ProfileCard from '@/components/ProfileCard';
 import { center } from '@/styles/shared';
 
@@ -19,14 +21,13 @@ const styles: Record<string, React.CSSProperties> = {
     }
 }
 
-interface ProfileCardProps {
-    viewportIsPortable: boolean;
-}
 
-const ProfileSection: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
+const ProfileSection: React.FC = () => {
+    const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
+
     const sectionCntnrStyles = {
         ...styles.sectionCntnr,
-        flexDirection: viewportIsPortable ? 'column' : 'row' as 'column' | 'row',
+        flexDirection: viewportIsPortable ? 'column' : 'row-reverse' as 'column' | 'row-reverse',
     }
 
     const cardCntnrStyles = {
@@ -37,7 +38,7 @@ const ProfileSection: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     const contentCntnr = {
         ...styles.contentCntnr,
         width: viewportIsPortable ? '100%' : '50%',
-        padding: viewportIsPortable ? '0 1rem' : '0 0 0 5rem'
+        padding: viewportIsPortable ? '0 1rem' : '0 5rem 0'
     }
 
     return (
@@ -46,7 +47,7 @@ const ProfileSection: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
                 <ProfileCard viewportIsPortable={viewportIsPortable} />
             </div>
             <div style={contentCntnr}>
-                <h2 style={styles.header}>Hello there...</h2>
+                <h2 style={styles.header}>HELLO THERE...</h2>
                 <p>My name is Jacob. I design and implement full stack web apps with a focus on effective, efficient, and elegant solutions. I leverage a diverse background in media production to bring designs and ideas to life.</p>
                 <p>My development journey began in 2020 with the curiosity to write computer programs in C++. After commencing tertiary studies in IT and Computer Science, I quickly refined my focus to web development as my core focus.</p>
                 <p>I&apos;m an individual driven by curiosity and eagerness to grow. Outside of development, I am usually saving the day (in a video game), or cooking exotic deliciousness!</p>

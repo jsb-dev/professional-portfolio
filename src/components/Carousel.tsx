@@ -1,69 +1,50 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import ProjectCard from './ProjectCard';
+import projects from '@/assets/content/projectContent';
 
 const styles: Record<string, React.CSSProperties> = {
     carouselCntnr: {
-        overflowX: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        width: '95%',
     },
 
     carousel: {
         display: 'flex',
-        overflowX: 'auto',
-        scrollSnapType: 'x mandatory'
+        overflowY: 'hidden',
+        scrollSnapType: 'x mandatory',
+        padding: '2rem 0.5rem',
+        margin: 0,
     },
-
-    leftBtn: {
-        position: 'absolute',
-        left: 0,
-        zIndex: 1
-    },
-
-    rightBtn: {
-        position: 'absolute',
-        right: 0,
-        zIndex: 1
-    }
 };
 
-const Carousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carouselRef = useRef<HTMLDivElement>(null);
+const Carousel: React.FC = () => {
+    const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
 
-    const handleArrowClick = (direction: 'left' | 'right') => {
-        if (!carouselRef.current) return;
+    const cntnrStyle = {
+        ...styles.carouselCntnr,
+        width: viewportIsPortable ? '95%' : '100%',
+    }
 
-        const scrollAmount = carouselRef.current.offsetWidth;;
-        const scrollTo = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
-
-        carouselRef.current.scrollTo({
-            left: scrollAmount * scrollTo,
-            behavior: 'smooth'
-        });
-
-        setCurrentIndex(scrollTo);
-    };
+    const carouselStyle = {
+        ...styles.carousel,
+        overflowX: viewportIsPortable ? 'scroll' : 'hidden' as 'scroll' | 'hidden',
+    }
 
     return (
-        <div style={styles.carouselCntnr}>
-            <div
-                ref={carouselRef}
-                style={styles.carousel}
-            >
-                {/* Cards go here */}
+        <div style={cntnrStyle}>
+            <div style={carouselStyle}>
+                {projects.map((project, index) => (
+                    <ProjectCard
+                        key={index}
+                        img={project.img}
+                        description={project.description}
+                        projectName={project.projectName}
+                        projectLink={project.projectLink}
+                    />
+                ))}
             </div>
-            <button
-                onClick={() => handleArrowClick('left')}
-                style={styles.leftBtn}
-            >
-                {'<'}
-            </button>
-            <button
-                onClick={() => handleArrowClick('right')}
-                style={styles.rightBtn}
-            >
-                {'>'}
-            </button>
         </div>
     );
 };

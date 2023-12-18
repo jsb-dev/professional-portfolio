@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import SkillTopic from '@/components/SkillTopic';
 import breakdown from '@/assets/svg/breakdown.svg';
 import analytical from '@/assets/svg/analytical.svg';
@@ -7,21 +9,11 @@ import laptop from '@/assets/svg/laptop.svg';
 import mobile from '@/assets/svg/mobile.svg';
 import react from '@/assets/svg/react.svg';
 
-const styles: Record<string, React.CSSProperties> = {
-    header: {
-        width: '100%',
-        textAlign: 'center',
-    },
-};
+const SkillsSection: React.FC = () => {
+    const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
 
-interface SkillsSectionProps {
-    viewportIsPortable: boolean;
-}
-
-const SkillsSection: React.FC<SkillsSectionProps> = ({ viewportIsPortable }) => {
     return (
         <section>
-            <h2 style={styles.header}>What will I bring to your team?</h2>
             <SkillTopic
                 header='An analytical approach'
                 description='A problem without context has no solution. Understanding the scope and nuance of a problem creates the scaffolding for an efficient, effective solution.'

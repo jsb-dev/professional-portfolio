@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 const styles: Record<string, React.CSSProperties> = {
     section: {
-        minHeight: '600px',
         width: '100%',
         display: 'flex',
         alignItems: 'center',
