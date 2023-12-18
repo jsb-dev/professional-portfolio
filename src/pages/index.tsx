@@ -2,16 +2,22 @@ import React, { useEffect } from 'react';
 import { updateLayout } from '@/redux/slices/uiSlice';
 import { useDispatch } from 'react-redux';
 import Image from 'next/image';
+import { center } from '@/styles/shared';
 import Header from '@/components/Header';
 import WelcomeSection from '@/sections/WelcomeSection';
 import ProfileSection from '@/sections/ProfileSection';
 import SkillsSection from '@/sections/SkillsSection';
 import ProjectSection from '@/sections/ProjectSection';
+import AboutMe from '@/dividers/AboutMe';
+import Skills from '@/dividers/Skills';
 import bgImg from '@/assets/images/bg-img.jpg';
 
 const styles: Record<string, React.CSSProperties> = {
     container: {
         overflow: 'hidden',
+    },
+    sectionCntnr: {
+        ...center,
     },
     bgImg: {
         position: 'fixed' as 'fixed',
@@ -47,9 +53,15 @@ const AboutPage: React.FC = () => {
             <Header />
             <div style={styles.largeDivider} />
             <WelcomeSection />
-            <ProjectSection />
+            <div style={styles.sectionCntnr}>
+                <ProjectSection />
+            </div>
+            <AboutMe />
             <ProfileSection />
-            <SkillsSection />
+            <Skills />
+            <div style={styles.sectionCntnr}>
+                <SkillsSection />
+            </div>
         </div>
     );
 };

@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import InfoIcon from '@/assets/icons/InfoIcon';
+import CloseIcon from '@/assets/icons/CloseIcon';
+import VisitIcon from '@/assets/icons/visit_icon.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { StaticImageData } from 'next/image';
 import { center, btn } from '@/styles/shared';
 
-const backgroundColor = 'rgba(0, 0, 0, 0.5)';
+const backgroundColor = 'rgba(0, 0, 0, 0.55)';
 
 const styledBtn: React.CSSProperties = {
     ...btn,
     position: 'absolute',
-    width: 50,
+    width: 40,
+    height: 40,
     margin: '1rem',
 }
 
 const styles: Record<string, React.CSSProperties> = {
     cardCntnr: {
         ...center,
-        height: '70dvh',
+        height: 400,
+        maxHeight: '65dvh',
         minWidth: '220px',
         maxWidth: '600px',
         width: '500px',
@@ -25,6 +30,9 @@ const styles: Record<string, React.CSSProperties> = {
         position: 'relative',
         margin: '1rem',
         overflow: 'hidden',
+        borderRadius: '.5rem',
+        transition: 'box-shadow 0.4s ease-in-out',
+        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
     },
 
     toggleBtn: {
@@ -41,6 +49,14 @@ const styles: Record<string, React.CSSProperties> = {
         zIndex: 1,
     },
 
+    iconCntnr: {
+        ...center,
+        width: '100%',
+        height: '100%',
+        padding: 0,
+        margin: 0,
+    },
+
     img: {
         width: '80%',
         objectFit: 'cover',
@@ -48,15 +64,13 @@ const styles: Record<string, React.CSSProperties> = {
     },
 
     descBg: {
-        ...center,
         position: 'absolute',
         top: 0,
         left: 0,
-        zIndex: 1,
         backgroundColor,
         width: '100%',
         height: '100%',
-        padding: '10rem 1rem',
+        padding: '1.5rem 0.5rem',
     },
 
     descCntnr: {
@@ -69,15 +83,15 @@ const styles: Record<string, React.CSSProperties> = {
         color: 'white',
         padding: '1rem 1rem',
         fontSize: '11pt',
+        textAlign: 'right',
     },
 
     h2: {
-        textAlign: 'left',
+        textAlign: 'right',
         position: 'absolute',
         bottom: 0,
         left: '1rem',
         fontSize: '18pt',
-        zIndex: 1,
         textTransform: 'uppercase',
         letterSpacing: '0.3rem',
         lineHeight: '2.5rem',
@@ -94,17 +108,27 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName, projectLink }) => {
     const [view, setView] = useState<'image' | 'description'>('image');
+    const [isHovered, setIsHovered] = useState(false);
     const { viewportIsPortable, viewportIsVertical } = useSelector((state: RootState) => state.ui);
 
     const toggleView = () => {
         setView(view === 'image' ? 'description' : 'image');
     };
 
-    const imgStyle = {
-        ...styles.img,
-        display: 'block',
-        zIndex: 0,
-    }
+    const onHover = () => {
+        setIsHovered(true);
+    };
+
+    const onLeave = () => {
+        setIsHovered(false);
+    };
+
+    const cardCntnrStyle = {
+        ...styles.cardCntnr,
+        ...(isHovered && view === 'image' ? {
+            boxShadow: '0 0 1rem 0.1rem rgba(255, 255, 255, 0.3), inset 0 0 1rem 0.1rem rgba(255, 255, 255, 0.3)',
+        } : {}),
+    };
 
     const descCntnrStyle = {
         ...styles.nameCntnr,
@@ -112,33 +136,45 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
     }
 
     return (
-        <div style={styles.cardCntnr}>
-            {view === 'image' && (
-                <>
-                    {((viewportIsPortable && viewportIsVertical) || (!viewportIsPortable)) && (<button
-                        style={styles.toggleBtn}
-                        onClick={toggleView}
-                    >
-                        Tgl
-                    </button>)}
-                    <Image
-                        src={img}
-                        alt={projectName}
-                        style={imgStyle}
-                    />
-                    {(!viewportIsPortable && !viewportIsVertical) && (<h2 style={styles.h2}>{projectName}</h2>)}
-                </>
-            )}
+        <div
+            style={cardCntnrStyle}
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
+        >            {view === 'image' && (
+            <>
+                {((viewportIsPortable && viewportIsVertical) || (!viewportIsPortable)) && (<button
+                    style={styles.toggleBtn}
+                    onClick={toggleView}
+                >
+                    <div style={styles.iconCntnr}>
+                        <InfoIcon />
+                    </div>
+                </button>)}
+                <Image
+                    src={img}
+                    alt={projectName}
+                    style={styles.img}
+                />
+                {(!viewportIsPortable && !viewportIsVertical) && (<h2 style={styles.h2}>{projectName}</h2>)}
+            </>
+        )}
             {view === 'description' && (
                 <div style={styles.descBg}>
                     <button
                         style={styles.toggleBtn}
                         onClick={toggleView}
                     >
-                        Tgl
+                        <div style={styles.iconCntnr}>
+                            <CloseIcon />
+                        </div>
                     </button>
                     <div style={descCntnrStyle}>
-                        {!viewportIsPortable && (<h2>{projectName}</h2>)}
+                        {!viewportIsPortable && (<h2 style={{
+                            ...styles.h2,
+                            position: 'relative',
+                            textAlign: 'right',
+                            width: '90%',
+                        }}>{projectName}</h2>)}
                         <p style={styles.paragraph}>{description}</p>
                     </div>
                 </div>
@@ -148,7 +184,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <button style={styles.visitBtn}>Vst</button>
+                <button style={styles.visitBtn}>
+                    <div style={{
+                        ...styles.iconCntnr,
+                        backgroundImage: `url(${VisitIcon.src})`,
+                        backgroundSize: '70%',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center',
+
+                    }}>
+                    </div>
+                </button>
             </a>
         </div>
     );

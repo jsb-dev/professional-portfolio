@@ -9,19 +9,11 @@ import laptop from '@/assets/svg/laptop.svg';
 import mobile from '@/assets/svg/mobile.svg';
 import react from '@/assets/svg/react.svg';
 
-const styles: Record<string, React.CSSProperties> = {
-    header: {
-        width: '100%',
-        textAlign: 'center',
-    },
-};
-
 const SkillsSection: React.FC = () => {
     const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
 
     return (
         <section>
-            <h2 style={styles.header}>What will I bring to your team?</h2>
             <SkillTopic
                 header='An analytical approach'
                 description='A problem without context has no solution. Understanding the scope and nuance of a problem creates the scaffolding for an efficient, effective solution.'
