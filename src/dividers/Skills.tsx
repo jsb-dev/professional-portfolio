@@ -5,7 +5,9 @@ const styles: Record<string, React.CSSProperties> = {
     sectionCntnr: {
         ...center,
         width: '100%',
-        height: '25dvh',
+        height: '95dvh',
+        margin: 0,
+        padding: 0,
     },
 
     headerCntnr: {
@@ -26,7 +28,7 @@ const WelcomeSection: React.FC = () => {
     return (
         <section style={styles.sectionCntnr}>
             <div style={styles.headerCntnr}>
-                <h2 style={styles.header}>WHAT I&apos;LL BRING TO YOUR TEAM</h2>
+                <h3 style={styles.header}>WHAT I&apos;LL BRING TO YOUR TEAM</h3>
             </div>
         </section>
     );

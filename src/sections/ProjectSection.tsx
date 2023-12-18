@@ -3,11 +3,11 @@ import Carousel from '@/components/Carousel';
 
 const styles: Record<string, React.CSSProperties> = {
     section: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
-        borderRadius: '.5rem',
-        width: '94%',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        width: '100%',
+        height: '100dvh',
         padding: 0,
+        border: 'solid 1px rgba(255, 255, 255, 0.2)',
     },
 
     carouselCntnr: {
@@ -16,11 +16,11 @@ const styles: Record<string, React.CSSProperties> = {
 
     h2: {
         height: 0,
+        padding: 0,
         textAlign: 'center',
         letterSpacing: '0.5rem',
         wordSpacing: '0.5rem',
-        margin: '1rem 0 0 0',
-        padding: 0,
+        margin: '4rem 0 2rem 0',
     },
 }
 

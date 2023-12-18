@@ -19,7 +19,7 @@ const styles: Record<string, React.CSSProperties> = {
         backgroundColor: 'rgba(0,0,0,0.9)',
         color: '#ffffff',
         border: '0.1rem solid rgba(255, 255, 255, 0.3)',
-        boxShadow: 'inset 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.3)',
+        boxShadow: 'inset 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.3), inset 0 15px 2rem 1rem rgba(0, 0, 0, 0.9)',
         borderBottomLeftRadius: '1rem',
         borderBottomRightRadius: '1rem',
     },

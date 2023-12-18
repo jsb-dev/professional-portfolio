@@ -1,15 +1,14 @@
 import React from 'react';
-import { center } from '@/styles/shared';
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 
 const styles: Record<string, React.CSSProperties> = {
     section: {
-        width: '100%',
+        width: '90%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2rem',
+        padding: '2rem 0',
     },
 
     description: {
@@ -17,7 +16,7 @@ const styles: Record<string, React.CSSProperties> = {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column' as 'column',
-        padding: '2rem 0',
+        padding: '2rem 1rem',
     },
 
     svgCntnr: {
@@ -92,7 +91,7 @@ const SkillTopic: React.FC<SkillTopicProps> = ({
                 ></Image>
             </div>
             <div style={descCntnrStyle}>
-                <h3 style={textStyle}>{header}</h3>
+                <h4 style={textStyle}>{header}</h4>
                 <p style={textStyle}>{description}</p>
             </div>
         </div>

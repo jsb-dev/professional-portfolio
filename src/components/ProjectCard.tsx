@@ -71,14 +71,13 @@ const styles: Record<string, React.CSSProperties> = {
         backgroundColor,
         width: '100%',
         height: '100%',
-        padding: '1.5rem 0.5rem',
+        padding: '1.5rem 1.5rem 1.5rem 0',
     },
 
     paragraph: {
         color: 'white',
         padding: '2rem 1.5rem',
         fontSize: '11pt',
-        textAlign: 'right',
     },
 
     h2: {
@@ -90,7 +89,6 @@ const styles: Record<string, React.CSSProperties> = {
         textTransform: 'uppercase',
         letterSpacing: '0.3rem',
         lineHeight: '2.5rem',
-        textShadow: '0.3rem 0.3rem 0.1rem black',
     },
 }
 
@@ -128,6 +126,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
     const descCntnrStyle = {
         ...styles.nameCntnr,
         color: view === 'image' ? 'black' : 'transparent'
+    }
+
+    const paragraphStyle = {
+        ...styles.paragraph,
+        textAlign: viewportIsPortable ? 'center' : 'right' as 'center' | 'right',
     }
 
     return (
@@ -170,7 +173,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                             textAlign: 'right',
                             width: '90%',
                         }}>{projectName}</h2>)}
-                        <p style={styles.paragraph}>{description}</p>
+                        <p style={paragraphStyle}>{description}</p>
                     </div>
                 </div>
             )}

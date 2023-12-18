@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import { center } from '@/styles/shared';
 import Header from '@/components/Header';
-import WelcomeSection from '@/sections/WelcomeSection';
+import WelcomeSection from '@/sections/LogoSection';
 import ProfileSection from '@/sections/ProfileSection';
 import SkillsSection from '@/sections/SkillsSection';
 import ProjectSection from '@/sections/ProjectSection';
@@ -55,6 +55,7 @@ const AboutPage: React.FC = () => {
             <div style={styles.largeDivider} />
             <div style={styles.sectionCntnr}><WelcomeSection /></div>
             <div style={styles.sectionCntnr}><ProjectSection /></div>
+            <div style={styles.sectionCntnr}><AboutMe /></div>
             <div style={styles.sectionCntnr}><ProfileSection /></div>
             <div style={styles.sectionCntnr}><Skills /></div>
             <div style={styles.sectionCntnr}><SkillsSection /></div>

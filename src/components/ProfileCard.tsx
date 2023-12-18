@@ -3,7 +3,8 @@ import Image from 'next/image';
 import imageUrl from '@/assets/images/profile.jpg';
 import { center, btn } from '@/styles/shared';
 
-const minHeight = 400
+const minHeight = 400;
+const padding = 0;
 
 const styles: Record<string, React.CSSProperties> = {
     profileCntnr: {
@@ -15,7 +16,7 @@ const styles: Record<string, React.CSSProperties> = {
         textAlign: 'center' as 'center',
         width: 'min(85dvw, 600px)',
         minHeight,
-        padding: 0,
+        padding,
     },
 
     imgCntnr: {
@@ -30,13 +31,17 @@ const styles: Record<string, React.CSSProperties> = {
     },
 
     profileHeader: {
-        margin: '.5rem 0',
+        padding,
         color: 'rgb(228, 229, 235)',
+        width: '100%',
+        fontSize: '16pt',
     },
 
     profileDesc: {
-        margin: '.5rem',
+        padding,
         color: 'rgb(202, 202, 204)',
+        width: '80%',
+        fontSize: '10pt',
     },
 };
 
@@ -53,7 +58,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
 
     const imgStyle = {
         ...styles.profileImg,
-        width: viewportIsPortable ? '50%' : '80%',
+        width: viewportIsPortable ? '70%' : '80%',
     }
 
     const orientation = {
@@ -75,11 +80,11 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     return (
         <div style={profileCntnrStyle} >
             <div style={imgCntnrStyle}>
-                <Image src={imageUrl} alt="Photo" style={imgStyle} />
+                <Image src={imageUrl} alt="A photo of Jacob within a circle headshot frame" style={imgStyle} />
             </div>
             <div style={textCntnrStyle}>
-                <h1 style={styles.profileHeader}>JACOB BOOTH</h1>
-                <p style={styles.profileDesc}>Full Stack Developer and<br />Multimedia Specialist</p>
+                <h3 style={styles.profileHeader}>JACOB BOOTH</h3>
+                <p style={styles.profileDesc}>Full Stack Developer,<br />Multimedia Specialist</p>
                 <button style={btn}>Contact</button>
             </div>
         </div>

@@ -23,15 +23,13 @@ const styles: Record<string, React.CSSProperties> = {
         height: 'auto',
     },
 
-    header: {
-        fontSize: '10pt',
-        fontWeight: 600,
-        textTransform: 'uppercase' as 'uppercase',
-    }
+    h3: {
+        fontWeight: 500,
+    },
 }
 
 
-const WelcomeSection: React.FC = () => {
+const LogoSection: React.FC = () => {
     const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
 
     const logoStyle = {
@@ -45,30 +43,32 @@ const WelcomeSection: React.FC = () => {
     }
 
     const headerStyle = {
-        ...styles.header,
+        ...styles.h3,
         margin: !viewportIsPortable ? '0 1rem' : '0',
-        letterSpacing: viewportIsPortable ? '.4rem' : '0.3rem',
+        letterSpacing: viewportIsPortable ? '0.2rem' : '0.4rem',
+        padding: viewportIsPortable ? '0 0 0.8rem 0' : '1rem',
+        ...(viewportIsPortable ? { fontSize: '10pt' } : {})
     }
 
     return (
         <section style={styles.sectionCntnr}>
             <Image src={logoUrl} alt="Logo" style={logoStyle} />
             <div style={headerCntnrStyle}>
-                <h2 style={{
+                <h3 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'right'
-                }}>Efficient</h2>
-                <h2 style={{
+                }}>EFFICIENT</h3>
+                <h3 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'left'
-                }}>Effective</h2>
-                <h2 style={{
+                }}>EFFECTIVE</h3>
+                <h3 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'right'
-                }}>Creative</h2>
+                }}>CREATIVE</h3>
             </div>
         </section>
     );
 }
 
-export default WelcomeSection;
+export default LogoSection;
