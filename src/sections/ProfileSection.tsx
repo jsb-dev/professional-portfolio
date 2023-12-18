@@ -47,7 +47,7 @@ const ProfileSection: React.FC = () => {
                 <ProfileCard viewportIsPortable={viewportIsPortable} />
             </div>
             <div style={contentCntnr}>
-                <h2 style={styles.header}>Hello there...</h2>
+                <h2 style={styles.header}>HELLO THERE...</h2>
                 <p>My name is Jacob. I design and implement full stack web apps with a focus on effective, efficient, and elegant solutions. I leverage a diverse background in media production to bring designs and ideas to life.</p>
                 <p>My development journey began in 2020 with the curiosity to write computer programs in C++. After commencing tertiary studies in IT and Computer Science, I quickly refined my focus to web development as my core focus.</p>
                 <p>I&apos;m an individual driven by curiosity and eagerness to grow. Outside of development, I am usually saving the day (in a video game), or cooking exotic deliciousness!</p>

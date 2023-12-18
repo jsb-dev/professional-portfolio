@@ -4,19 +4,19 @@ import Carousel from '@/components/Carousel';
 const styles: Record<string, React.CSSProperties> = {
     section: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        boxShadow: '0 0 1rem 0.25rem rgba(94, 103, 128, 0.5), inset 0 0 1rem 0.25rem rgba(94, 103, 128, 0.7)',
+        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
         borderRadius: '.5rem',
         width: '98%',
     },
 
     carouselCntnr: {
-        height: '80%',
         width: '100%',
     },
 
     h2: {
+        height: 0,
         textAlign: 'center',
-        letterSpacing: '0.2rem',
+        letterSpacing: '0.5rem',
         wordSpacing: '0.5rem',
         margin: '1rem 0 0 0',
         padding: 0,

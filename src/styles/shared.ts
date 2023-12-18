@@ -14,5 +14,5 @@ export const btn = {
     padding: '.5rem',
     cursor: 'pointer',
     width: '80%',
-    transition: 'all .3s ease-in-out',
+    transition: 'all 0.3s ease-in-out',
 };
