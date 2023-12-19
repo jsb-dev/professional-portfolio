@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { center } from '@/styles/shared';
 
 const styles: Record<string, React.CSSProperties> = {
@@ -22,13 +25,18 @@ const styles: Record<string, React.CSSProperties> = {
 }
 
 
-const WelcomeSection: React.FC = () => {
+const AboutDivider: React.FC = () => {
+    const aboutDivRef = useRef<HTMLHeadingElement>(null);
+    useIntersectionObserver(aboutDivRef, 'aboutDivRef');
+    const animatedElements = useSelector((state: RootState) => state.ui.animatedElements);
+
+    const fadeIn = animatedElements['aboutDivRef'] ? 'fade-in' : 'blank';
 
     return (
         <section style={styles.sectionCntnr}>
-            <h3 style={styles.header}>ABOUT MYSELF</h3>
+            <h3 ref={aboutDivRef} className={fadeIn} style={styles.header}>ABOUT MYSELF</h3>
         </section>
     );
 }
 
-export default WelcomeSection;
+export default AboutDivider;

@@ -1,60 +1,15 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes transitionRight {
-  from {
-    transform: translateX(-20px);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-.transition-right {
-  animation: transitionRight 0.5s ease-in-out;
-}
-
-@keyframes transitionLeft {
-  from {
-    transform: translateX(20px);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-.transition-left {
-  animation: transitionLeft 0.5s ease-in-out;
-}
-
-@keyframes transitionUp {
-  from {
-    transform: translateY(20px);
-  }
-
-  to {
-    transform: translateY(0);
-  }
-}
-.transition-up {
-  animation: transitionUp 0.5s ease-in-out;
-}
-
 * {
   border: none;
   text-decoration: none;
+  scroll-snap-type: mandatory;
   animation: fadeIn 0.5s ease-in-out;
-  transition: none;
   letter-spacing: 0.1rem;
   word-spacing: 0.1rem;
   color: #fff;
+}
+
+body {
+  background-color: rgb(20, 20, 20);
 }
 
 div {
@@ -66,12 +21,8 @@ section {
   margin: 3rem 2rem;
 }
 
-body {
-  background-color: rgb(20, 20, 20);
-}
-
 h1 {
-  font-size: 24pt;
+  font-size: 22pt;
   font-weight: 600;
   font-family: 'Nunito', sans-serif;
 }
@@ -103,6 +54,10 @@ span,
 button {
   font-size: 12pt;
   font-weight: 500;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+small {
   font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 

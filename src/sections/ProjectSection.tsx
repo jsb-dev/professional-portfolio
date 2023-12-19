@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import Carousel from '@/components/Carousel';
 
 const styles: Record<string, React.CSSProperties> = {
@@ -14,9 +17,9 @@ const styles: Record<string, React.CSSProperties> = {
         width: '100%',
     },
 
-    h2: {
+    h1: {
         height: 0,
-        padding: 0,
+        padding: '0 1rem 1rem 1rem',
         textAlign: 'center',
         letterSpacing: '0.5rem',
         wordSpacing: '0.5rem',
@@ -25,15 +28,21 @@ const styles: Record<string, React.CSSProperties> = {
 }
 
 const ProjectSection: React.FC = () => {
+    const projectSctnRef = useRef<HTMLHeadingElement>(null);
+    useIntersectionObserver(projectSctnRef, 'projectSctnRef');
+    const animatedElements = useSelector((state: RootState) => state.ui.animatedElements);
+
+    const transitionUp = animatedElements['projectSctnRef'] ? 'transition-up' : '';
 
     return (
-        <section style={styles.section}>
+        <section ref={projectSctnRef} style={styles.section} className={transitionUp}>
             <div style={styles.carouselCntnr}>
-                <h1 style={styles.h2}>PORTFOLIO</h1>
+                <h1 ref={projectSctnRef} className={transitionUp} style={styles.h1}>PORTFOLIO</h1>
                 <Carousel />
             </div>
         </section>
     );
-}
+};
+
 
 export default ProjectSection;

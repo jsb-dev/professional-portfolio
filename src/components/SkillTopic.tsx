@@ -77,7 +77,7 @@ const SkillTopic: React.FC<SkillTopicProps> = ({
 
     const textStyle = {
         ...styles.text,
-        textAlign: reverse && !viewportIsPortable ? 'right' : 'left' as 'right' | 'left',
+        textAlign: reverse && !viewportIsPortable ? 'right' : 'center' as 'right' | 'center',
     };
 
     if (reverse && !viewportIsPortable) {

@@ -4,6 +4,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import store from '@/redux/store';
 import 'normalize.css';
 import '@/styles/globals.css';
+import '@/styles/animations.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
 

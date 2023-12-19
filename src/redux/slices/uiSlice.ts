@@ -8,12 +8,14 @@ interface WindowSize {
 export interface UIState {
   viewportIsVertical: boolean;
   viewportIsPortable: boolean;
+  animatedElements: Record<string, boolean>;
 }
 
 const initialState: UIState = {
   viewportIsVertical: false,
   viewportIsPortable: false,
-};
+  animatedElements: {},
+}
 
 const uiSlice = createSlice({
   name: 'ui',
@@ -26,9 +28,12 @@ const uiSlice = createSlice({
         (state.viewportIsVertical && innerWidth < 1080) ||
         (!state.viewportIsVertical && innerWidth < 1200);
     },
+    setElementAnimated(state, action: PayloadAction<string>) {
+      state.animatedElements[action.payload] = true;
+    },
   },
 });
 
-export const { updateLayout } = uiSlice.actions;
+export const { updateLayout, setElementAnimated } = uiSlice.actions;
 
 export default uiSlice.reducer;
