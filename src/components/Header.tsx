@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import Image from 'next/image';
 import logoUrl from '@/assets/images/logo.png';
-import MenuIcon from '@/assets/icons/MenuIcon';
+import NavMenuBtn from './NavMenuBtn';
 
 const styles: Record<string, React.CSSProperties> = {
     header: {
@@ -14,7 +14,6 @@ const styles: Record<string, React.CSSProperties> = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '80px',
         width: '100%',
         backgroundColor: 'rgba(0,0,0,0.9)',
         color: '#ffffff',
@@ -26,9 +25,10 @@ const styles: Record<string, React.CSSProperties> = {
     container: {
         display: 'flex',
         justifyContent: 'space-between',
+        height: 70,
         alignItems: 'center',
         width: '100%',
-        padding: '2rem 1rem',
+        padding: '0 1rem',
     },
     logoContainer: {
         display: 'flex',
@@ -38,15 +38,15 @@ const styles: Record<string, React.CSSProperties> = {
         width: '80px',
         height: 'auto',
     },
-    smallContainer: {
+    smallCntnr: {
+        paddingLeft: '2rem',
         display: 'flex',
-        flexDirection: 'column' as 'column' | 'row',
-        marginLeft: '1rem',
+        flexDirection: 'column' as 'column',
     },
     smallText: {
-        textAlign: 'center' as 'center' | 'left' | 'right' | 'justify' | 'initial' | 'inherit',
+        textAlign: 'left' as 'left',
         letterSpacing: '0.1rem',
-        wordSpacing: '0.2rem',
+        padding: '0',
     },
     logoText: {
         fontSize: '1.5rem',
@@ -65,7 +65,6 @@ const styles: Record<string, React.CSSProperties> = {
 const Header: React.FC = () => {
     const { viewportIsVertical } = useSelector((state: RootState) => state.ui);
 
-
     return (
         <header style={styles.header}>
             <div style={styles.container}>
@@ -73,17 +72,18 @@ const Header: React.FC = () => {
                     <Image src={logoUrl} alt="Logo" style={styles.logoImg} />
                     <div style={styles.smallContainer}>
                         {!viewportIsVertical && (
-                            <>
+                            <div style={styles.smallCntnr}>
                                 <small style={styles.smallText}>Full Stack Developer</small>
-                                <small style={styles.smallText}>Multimedia Specialist</small>
-                            </>
+                                <small style={styles.smallText}>React Specialist</small>
+                                <small style={styles.smallText}>Multimedia Producer</small>
+                            </div>
                         )}
 
                     </div>
                 </div>
                 <div style={styles.endContainer}>
                     <div style={styles.menuIconContainer}>
-                        <MenuIcon />
+                        <NavMenuBtn />
                     </div>
                 </div>
             </div>

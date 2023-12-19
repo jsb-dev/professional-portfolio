@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import Image from 'next/image';
 import imageUrl from '@/assets/images/profile.jpg';
 import { center, btn } from '@/styles/shared';
@@ -50,6 +53,9 @@ interface ProfileCardProps {
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
+    const animatedElements = useSelector((state: RootState) => state.ui.animatedElements);
+    const profileCntnrRef = useRef<HTMLDivElement>(null);
+    useIntersectionObserver(profileCntnrRef, 'profileCntnrRef');
 
     const profileCntnrStyle = {
         ...styles.profileCntnr,
@@ -77,12 +83,15 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
         ...orientation,
     }
 
+    const cntnrAnimation = animatedElements['profileCntnrRef'] ? 'transition-up' : 'blank';
+    const cntntAnimation = animatedElements['profileCntnrRef'] ? 'transition-left' : 'blank';
+
     return (
-        <div style={profileCntnrStyle} >
+        <div ref={profileCntnrRef} className={cntnrAnimation} style={profileCntnrStyle} >
             <div style={imgCntnrStyle}>
                 <Image src={imageUrl} alt="A photo of Jacob within a circle headshot frame" style={imgStyle} />
             </div>
-            <div style={textCntnrStyle}>
+            <div ref={profileCntnrRef} className={cntntAnimation} style={textCntnrStyle}>
                 <h3 style={styles.profileHeader}>JACOB BOOTH</h3>
                 <p style={styles.profileDesc}>Full Stack Developer,<br />Multimedia Specialist</p>
                 <button style={btn}>Contact</button>

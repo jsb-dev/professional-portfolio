@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 import LogoSection from '@/sections/LogoSection';
 import ProfileSection from '@/sections/ProfileSection';
 import SkillsSection from '@/sections/SkillsSection';
-import ProjectSection from '@/sections/ProjectSection';
+import ProjectSection from '@/sections/PortfolioSection';
 import AboutMe from '@/dividers/AboutMe';
 import Skills from '@/dividers/Skills';
 import bgImg from '@/assets/images/bg-img.jpg';
@@ -49,7 +49,7 @@ const IndexPage: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <div style={styles.container}>
+        <div id='page-top' style={styles.container}>
             <Image src={bgImg} alt="Background image" style={styles.bgImg} priority />
             <Header />
             <div style={styles.largeDivider} />

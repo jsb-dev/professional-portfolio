@@ -8,15 +8,22 @@ import { center } from '@/styles/shared';
 const styles: Record<string, React.CSSProperties> = {
     sectionCntnr: {
         width: '100%',
-        padding: '3rem 2rem',
+        padding: '4rem 2rem',
         minHeight: '95dvh',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        border: 'solid 1px rgba(255, 255, 255, 0.2)',
+        border: 'solid 1px rgba(255, 255, 255, 0.6)',
+        boxShadow: '0 0 1rem 0.1rem rgba(255, 255, 255, 0.6)',
     },
     cntntCntnr: {
         ...center,
     },
+    cardCntnr: {
+        ...center,
+        padding: 0,
+        margin: 0,
+    },
     h2: {
+        padding: '4rem 0 2rem 0',
         textAlign: 'left' as 'left',
     },
     h3: {
@@ -39,11 +46,6 @@ const ProfileSection: React.FC = () => {
         flexDirection: viewportIsPortable ? 'column' : 'row-reverse' as 'column' | 'row-reverse',
     }
 
-    const cardCntnrStyle = {
-        ...center,
-        margin: viewportIsPortable ? '2rem 0' : '0 0 0 4rem',
-    }
-
     const articleStyle = {
         ...styles.article,
         width: viewportIsPortable ? '80%' : '40%',
@@ -59,10 +61,10 @@ const ProfileSection: React.FC = () => {
     const transitionUp = animatedElements['profileSctnRef'] ? 'transition-up' : 'blank';
 
     return (
-        <section ref={profileSctnRef} className={fadeIn} style={styles.sectionCntnr}>
+        <section id='profile-section' ref={profileSctnRef} className={fadeIn} style={styles.sectionCntnr}>
             <h2 style={h2Style}>PROFILE</h2>
             <div ref={profileSctnRef} className={transitionUp} style={cntntCntnrStyle}>
-                <div style={cardCntnrStyle}>
+                <div style={styles.cardCntnr}>
                     <ProfileCard viewportIsPortable={viewportIsPortable} />
                 </div>
                 <article style={articleStyle}>

@@ -153,7 +153,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                     alt={projectName}
                     style={styles.img}
                 />
-                {(!viewportIsPortable && !viewportIsVertical) && (<h2 style={styles.h2}>{projectName}</h2>)}
+                {(!viewportIsPortable && !viewportIsVertical) && (<h3 style={styles.h2}>{projectName}</h3>)}
             </>
         )}
             {view === 'description' && (
@@ -167,12 +167,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                         </div>
                     </button>
                     <div style={descCntnrStyle}>
-                        {!viewportIsPortable && (<h2 style={{
+                        {!viewportIsPortable && (<h3 style={{
                             ...styles.h2,
                             position: 'relative',
                             textAlign: 'right',
                             width: '90%',
-                        }}>{projectName}</h2>)}
+                        }}>{projectName}</h3>)}
                         <p style={paragraphStyle}>{description}</p>
                     </div>
                 </div>

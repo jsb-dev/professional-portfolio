@@ -67,6 +67,7 @@ const LogoSection: React.FC = () => {
                     textAlign: !viewportIsPortable ? 'center' : 'right'
                 }}>CREATIVE</h4>
             </div>
+            <div id='portfolio-section-anchor' style={{ margin: 0, padding: 0 }} />
         </section>
     );
 }

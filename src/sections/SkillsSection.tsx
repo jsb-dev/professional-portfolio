@@ -22,6 +22,7 @@ const styles: Record<string, React.CSSProperties> = {
         ...section,
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         border: 'solid 1px rgba(255, 255, 255, 0.2)',
+        paddingTop: '6rem',
     },
 
     h2: {
@@ -61,16 +62,16 @@ const SkillsSection: React.FC = () => {
 
     const fadeIn1 = animatedElements['ssCntnr1Ref'] ? 'fade-in' : 'blank';
     const fadeIn2 = animatedElements['ssCntnr2Ref'] ? 'fade-in' : 'blank';
-    const transitionUp1 = animatedElements['ssRef1'] ? 'transition-right' : '';
-    const transitionUp2 = animatedElements['ssRef2'] ? 'transition-left' : '';
-    const transitionUp3 = animatedElements['ssRef3'] ? 'transition-right' : '';
-    const transitionUp4 = animatedElements['ssRef4'] ? 'transition-left' : '';
-    const transitionUp5 = animatedElements['ssRef5'] ? 'transition-right' : '';
-    const transitionUp6 = animatedElements['ssRef6'] ? 'transition-left' : '';
+    const transitionUp1 = animatedElements['ssRef1'] ? 'transition-right' : 'blank';
+    const transitionUp2 = animatedElements['ssRef2'] ? 'transition-left' : 'blank';
+    const transitionUp3 = animatedElements['ssRef3'] ? 'transition-right' : 'blank';
+    const transitionUp4 = animatedElements['ssRef4'] ? 'transition-left' : 'blank';
+    const transitionUp5 = animatedElements['ssRef5'] ? 'transition-right' : 'blank';
+    const transitionUp6 = animatedElements['ssRef6'] ? 'transition-left' : 'blank';
 
     return (
         <>
-            <section ref={ssCntnr1Ref} className={fadeIn1} style={styles.sectionCntnrBg}>
+            <section id='skills-section' ref={ssCntnr1Ref} className={fadeIn1} style={styles.sectionCntnrBg}>
                 <h2 style={styles.h2}>SKILLS</h2>
                 <div ref={ssRef1} className={transitionUp1} style={styles.topicContainer}>
                     <SkillTopic
