@@ -13,7 +13,7 @@ import react from '@/assets/svg/react.svg';
 const section = {
     ...center,
     width: '100%',
-    padding: '2rem',
+    padding: '4rem 0',
 };
 
 const styles: Record<string, React.CSSProperties> = {
@@ -26,7 +26,7 @@ const styles: Record<string, React.CSSProperties> = {
     h2: {
         textAlign: 'left' as 'left',
         width: '80%',
-        padding: '4rem 0 2rem 0'
+        padding: '2rem 0'
     },
 }
 

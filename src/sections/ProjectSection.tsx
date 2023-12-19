@@ -29,7 +29,7 @@ const ProjectSection: React.FC = () => {
     return (
         <section style={styles.section}>
             <div style={styles.carouselCntnr}>
-                <h2 style={styles.h2}>PROJECTS</h2>
+                <h1 style={styles.h2}>PORTFOLIO</h1>
                 <Carousel />
             </div>
         </section>

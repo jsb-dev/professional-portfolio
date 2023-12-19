@@ -50,7 +50,6 @@
 * {
   border: none;
   text-decoration: none;
-  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   animation: fadeIn 0.5s ease-in-out;
   transition: none;
   letter-spacing: 0.1rem;
@@ -73,23 +72,38 @@ body {
 
 h1 {
   font-size: 24pt;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
 }
 
 h2 {
-  font-size: 20pt;
+  font-size: 22pt;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
 }
 
 h3 {
-  font-size: 16pt;
+  font-size: 18pt;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
 }
 
-h4,
+h4 {
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+}
+
 h5,
 h6,
 p,
 span,
 button {
   font-size: 12pt;
+  font-weight: 500;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 h1,

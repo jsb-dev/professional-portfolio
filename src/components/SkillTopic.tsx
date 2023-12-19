@@ -8,7 +8,7 @@ const styles: Record<string, React.CSSProperties> = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2rem 0',
+        padding: '4rem 0',
     },
 
     description: {
@@ -16,7 +16,6 @@ const styles: Record<string, React.CSSProperties> = {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column' as 'column',
-        padding: '2rem 1rem',
     },
 
     svgCntnr: {
@@ -27,7 +26,8 @@ const styles: Record<string, React.CSSProperties> = {
     },
 
     text: {
-        width: '100%',
+        width: '90%',
+        padding: '1rem',
     },
 };
 

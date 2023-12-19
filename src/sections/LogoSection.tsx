@@ -23,7 +23,7 @@ const styles: Record<string, React.CSSProperties> = {
         height: 'auto',
     },
 
-    h3: {
+    h4: {
         fontWeight: 500,
     },
 }
@@ -43,7 +43,7 @@ const LogoSection: React.FC = () => {
     }
 
     const headerStyle = {
-        ...styles.h3,
+        ...styles.h4,
         margin: !viewportIsPortable ? '0 1rem' : '0',
         letterSpacing: viewportIsPortable ? '0.2rem' : '0.4rem',
         padding: viewportIsPortable ? '0 0 0.8rem 0' : '1rem',
@@ -52,20 +52,20 @@ const LogoSection: React.FC = () => {
 
     return (
         <section style={styles.sectionCntnr}>
-            <Image src={logoUrl} alt="Logo" style={logoStyle} />
+            <Image src={logoUrl} alt="The JSB-DEV Logo, written with a cyberpunk-inspired font, in front of a glowing, circular icon." style={logoStyle} />
             <div style={headerCntnrStyle}>
-                <h3 style={{
+                <h4 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'right'
-                }}>EFFICIENT</h3>
-                <h3 style={{
+                }}>EFFICIENT</h4>
+                <h4 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'left'
-                }}>EFFECTIVE</h3>
-                <h3 style={{
+                }}>EFFECTIVE</h4>
+                <h4 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'right'
-                }}>CREATIVE</h3>
+                }}>CREATIVE</h4>
             </div>
         </section>
     );
