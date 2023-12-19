@@ -21,14 +21,14 @@ const styledBtn: React.CSSProperties = {
 const styles: Record<string, React.CSSProperties> = {
     cardCntnr: {
         ...center,
-        height: 400,
+        height: 350,
         maxHeight: '65dvh',
         minWidth: '220px',
         maxWidth: '600px',
         width: '500px',
         backgroundColor,
         position: 'relative',
-        margin: '1rem',
+        margin: '0.5rem',
         overflow: 'hidden',
         borderRadius: '.5rem',
         transition: 'box-shadow 0.4s ease-in-out',
@@ -58,7 +58,8 @@ const styles: Record<string, React.CSSProperties> = {
     },
 
     img: {
-        width: '80%',
+        width: '70%',
+        height: 'auto',
         objectFit: 'cover',
         position: 'relative',
     },
@@ -70,20 +71,13 @@ const styles: Record<string, React.CSSProperties> = {
         backgroundColor,
         width: '100%',
         height: '100%',
-        padding: '1.5rem 0.5rem',
-    },
-
-    descCntnr: {
-        width: '100%',
-        overflowY: 'scroll',
-        overflowX: 'hidden',
+        padding: '1.5rem 1.5rem 1.5rem 0',
     },
 
     paragraph: {
         color: 'white',
-        padding: '1rem 1rem',
+        padding: '2rem 1.5rem',
         fontSize: '11pt',
-        textAlign: 'right',
     },
 
     h2: {
@@ -95,7 +89,6 @@ const styles: Record<string, React.CSSProperties> = {
         textTransform: 'uppercase',
         letterSpacing: '0.3rem',
         lineHeight: '2.5rem',
-        textShadow: '0.3rem 0.3rem 0.1rem black',
     },
 }
 
@@ -135,6 +128,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
         color: view === 'image' ? 'black' : 'transparent'
     }
 
+    const paragraphStyle = {
+        ...styles.paragraph,
+        textAlign: viewportIsPortable ? 'center' : 'right' as 'center' | 'right',
+    }
+
     return (
         <div
             style={cardCntnrStyle}
@@ -155,7 +153,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                     alt={projectName}
                     style={styles.img}
                 />
-                {(!viewportIsPortable && !viewportIsVertical) && (<h2 style={styles.h2}>{projectName}</h2>)}
+                {(!viewportIsPortable && !viewportIsVertical) && (<h3 style={styles.h2}>{projectName}</h3>)}
             </>
         )}
             {view === 'description' && (
@@ -169,13 +167,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                         </div>
                     </button>
                     <div style={descCntnrStyle}>
-                        {!viewportIsPortable && (<h2 style={{
+                        {!viewportIsPortable && (<h3 style={{
                             ...styles.h2,
                             position: 'relative',
                             textAlign: 'right',
                             width: '90%',
-                        }}>{projectName}</h2>)}
-                        <p style={styles.paragraph}>{description}</p>
+                        }}>{projectName}</h3>)}
+                        <p style={paragraphStyle}>{description}</p>
                     </div>
                 </div>
             )}

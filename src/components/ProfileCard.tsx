@@ -1,43 +1,50 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import Image from 'next/image';
 import imageUrl from '@/assets/images/profile.jpg';
 import { center, btn } from '@/styles/shared';
 
-const minHeight = 400
+const minHeight = 400;
+const padding = 0;
 
 const styles: Record<string, React.CSSProperties> = {
     profileCntnr: {
         display: 'flex',
         alignItems: 'center',
-        boxShadow: '0 0 3rem .25rem rgba(255, 255, 255, 0.2), inset 0 0 2rem 1rem rgba(0, 0, 0, 0.7)',
-        backgroundColor: 'rgba(43, 42, 43, .7)',
-        borderRadius: '1rem',
+        boxShadow: '0 0 3rem .25rem rgba(255, 255, 255, 0.1), inset 0 0 2rem 1rem rgba(0, 0, 0, 0.7)',
+        borderRadius: '.5rem',
+        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
         textAlign: 'center' as 'center',
-        width: 'min(90dvw, 600px)',
+        width: 'min(85dvw, 600px)',
         minHeight,
-        padding: 0,
+        padding,
     },
 
     imgCntnr: {
         ...center,
-        backgroundColor: 'rgba(53, 47, 59, .6)',
-        borderRadius: '1rem',
+        backgroundColor: 'rgba(50, 44, 50, .8)',
     },
 
     profileImg: {
         borderRadius: '50%',
-        boxShadow: '0 0 5rem 0.1rem rgba(94, 103, 128, 0.8)',
-        objectFit: 'cover' as 'cover',
+        height: 'auto',
+        padding: '1rem',
     },
 
     profileHeader: {
-        margin: '.5rem 0',
+        padding,
         color: 'rgb(228, 229, 235)',
+        width: '100%',
+        fontSize: '16pt',
     },
 
     profileDesc: {
-        margin: '.5rem',
+        padding,
         color: 'rgb(202, 202, 204)',
+        width: '80%',
+        fontSize: '10pt',
     },
 };
 
@@ -46,6 +53,9 @@ interface ProfileCardProps {
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
+    const animatedElements = useSelector((state: RootState) => state.ui.animatedElements);
+    const profileCntnrRef = useRef<HTMLDivElement>(null);
+    useIntersectionObserver(profileCntnrRef, 'profileCntnrRef');
 
     const profileCntnrStyle = {
         ...styles.profileCntnr,
@@ -55,11 +65,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     const imgStyle = {
         ...styles.profileImg,
         width: viewportIsPortable ? '70%' : '80%',
-        height: viewportIsPortable ? '70%' : '80%',
     }
 
     const orientation = {
-        width: viewportIsPortable ? '100%' : '50%',
+        width: viewportIsPortable ? '90%' : '50%',
         minHeight: viewportIsPortable ? '' : minHeight,
         padding: viewportIsPortable ? '1rem' : '',
     }
@@ -74,14 +83,17 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
         ...orientation,
     }
 
+    const cntnrAnimation = animatedElements['profileCntnrRef'] ? 'transition-up' : 'blank';
+    const cntntAnimation = animatedElements['profileCntnrRef'] ? 'transition-left' : 'blank';
+
     return (
-        <div style={profileCntnrStyle} >
+        <div ref={profileCntnrRef} className={cntnrAnimation} style={profileCntnrStyle} >
             <div style={imgCntnrStyle}>
-                <Image src={imageUrl} alt="Photo" style={imgStyle} />
+                <Image src={imageUrl} alt="A photo of Jacob within a circle headshot frame" style={imgStyle} />
             </div>
-            <div style={textCntnrStyle}>
-                <h1 style={styles.profileHeader}>JACOB BOOTH</h1>
-                <p style={styles.profileDesc}>Full Stack Developer and<br />Multimedia Specialist</p>
+            <div ref={profileCntnrRef} className={cntntAnimation} style={textCntnrStyle}>
+                <h3 style={styles.profileHeader}>JACOB BOOTH</h3>
+                <p style={styles.profileDesc}>Full Stack Developer,<br />Multimedia Specialist</p>
                 <button style={btn}>Contact</button>
             </div>
         </div>

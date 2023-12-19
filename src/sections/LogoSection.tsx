@@ -19,17 +19,17 @@ const styles: Record<string, React.CSSProperties> = {
 
     logo: {
         margin: '2rem',
+        width: '40%',
+        height: 'auto',
     },
 
-    header: {
-        fontSize: '10pt',
-        fontWeight: 600,
-        textTransform: 'uppercase' as 'uppercase',
-    }
+    h4: {
+        fontWeight: 500,
+    },
 }
 
 
-const WelcomeSection: React.FC = () => {
+const LogoSection: React.FC = () => {
     const { viewportIsPortable } = useSelector((state: RootState) => state.ui);
 
     const logoStyle = {
@@ -43,30 +43,33 @@ const WelcomeSection: React.FC = () => {
     }
 
     const headerStyle = {
-        ...styles.header,
+        ...styles.h4,
         margin: !viewportIsPortable ? '0 1rem' : '0',
-        letterSpacing: viewportIsPortable ? '.4rem' : '0.3rem',
+        letterSpacing: viewportIsPortable ? '0.2rem' : '0.4rem',
+        padding: viewportIsPortable ? '0 0 0.8rem 0' : '1rem',
+        ...(viewportIsPortable ? { fontSize: '10pt' } : {})
     }
 
     return (
         <section style={styles.sectionCntnr}>
-            <Image src={logoUrl} alt="Logo" style={logoStyle} />
+            <Image src={logoUrl} alt="The JSB-DEV Logo, written with a cyberpunk-inspired font, in front of a glowing, circular icon." style={logoStyle} />
             <div style={headerCntnrStyle}>
-                <h2 style={{
+                <h4 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'right'
-                }}>Efficient</h2>
-                <h2 style={{
+                }}>EFFICIENT</h4>
+                <h4 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'left'
-                }}>Effective</h2>
-                <h2 style={{
+                }}>EFFECTIVE</h4>
+                <h4 style={{
                     ...headerStyle,
                     textAlign: !viewportIsPortable ? 'center' : 'right'
-                }}>Creative</h2>
+                }}>CREATIVE</h4>
             </div>
+            <div id='portfolio-section-anchor' style={{ margin: 0, padding: 0 }} />
         </section>
     );
 }
 
-export default WelcomeSection;
+export default LogoSection;

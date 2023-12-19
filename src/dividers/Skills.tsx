@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { center } from '@/styles/shared';
 
 const styles: Record<string, React.CSSProperties> = {
     sectionCntnr: {
         ...center,
         width: '100%',
-        height: '25dvh',
+        height: '95dvh',
+        margin: 0,
+        padding: 0,
     },
 
     headerCntnr: {
@@ -21,15 +26,20 @@ const styles: Record<string, React.CSSProperties> = {
 }
 
 
-const WelcomeSection: React.FC = () => {
+const SkillsDivier: React.FC = () => {
+    const skillsDivRef = useRef<HTMLHeadingElement>(null);
+    useIntersectionObserver(skillsDivRef, 'skillsDivRef');
+    const animatedElements = useSelector((state: RootState) => state.ui.animatedElements);
+
+    const fadeIn = animatedElements['skillsDivRef'] ? 'fade-in' : 'blank';
 
     return (
         <section style={styles.sectionCntnr}>
             <div style={styles.headerCntnr}>
-                <h2 style={styles.header}>WHAT I&apos;LL BRING TO YOUR TEAM</h2>
+                <h3 ref={skillsDivRef} className={fadeIn} style={styles.header}>WHAT I&apos;LL BRING TO YOUR TEAM</h3>
             </div>
         </section>
     );
 }
 
-export default WelcomeSection;
+export default SkillsDivier;

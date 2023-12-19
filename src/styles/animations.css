@@ -1,0 +1,91 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes transitionLeft {
+  from {
+    transform: translateX(5%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.transition-left {
+  animation: transitionLeft 1.25s ease-in-out;
+  transition: all 1.25s ease-in-out;
+}
+
+@keyframes transitionRight {
+  from {
+    transform: translateX(-5%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.transition-right {
+  animation: transitionRight 1.25s ease-in-out;
+  transition: all 1.25s ease-in-out;
+}
+
+@keyframes transitionUp {
+  from {
+    transform: translateY(20px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+.transition-up {
+  animation: transitionUp 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
+}
+
+@keyframes transitionUp2 {
+  from {
+    transform: translateY(40px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+.transition-up-2 {
+  animation: transitionUp2 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
+}
+
+@keyframes transitionDown {
+  from {
+    transform: translateY(-20px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+.transition-down {
+  animation: transitionDown 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
+}
+
+.blank {
+  animation: none;
+  opacity: 0;
+}
