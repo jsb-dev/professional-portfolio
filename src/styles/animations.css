@@ -43,6 +43,21 @@
   transition: all 1.25s ease-in-out;
 }
 
+@keyframes stretch {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+.transition-right.stretch .skill-topic:after,
+.transition-left.stretch .skill-topic:after {
+  animation: stretch 2s ease-in-out;
+  transition: all 2s ease-in-out;
+}
+
 @keyframes transitionUp {
   from {
     transform: translateY(20px);

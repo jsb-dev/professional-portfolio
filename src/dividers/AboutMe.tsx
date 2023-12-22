@@ -16,7 +16,6 @@ const styles: Record<string, React.CSSProperties> = {
     header: {
         fontSize: '18pt',
         fontWeight: 600,
-        width: '100%',
         height: 0,
         margin: 0,
         padding: 0,

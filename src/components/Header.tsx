@@ -18,7 +18,7 @@ const styles: Record<string, React.CSSProperties> = {
         backgroundColor: 'rgba(0,0,0,0.9)',
         color: '#ffffff',
         border: '0.1rem solid rgba(255, 255, 255, 0.3)',
-        boxShadow: 'inset 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.3), inset 0 15px 2rem 1rem rgba(0, 0, 0, 0.9)',
+        boxShadow: 'inset 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.2), inset 0 15px 2rem 1rem rgba(0, 0, 0, 0.9)',
     },
     container: {
         display: 'flex',
@@ -62,13 +62,18 @@ const styles: Record<string, React.CSSProperties> = {
 };
 
 const Header: React.FC = () => {
-    const { viewportIsVertical } = useSelector((state: RootState) => state.ui);
+    const { viewportIsVertical, viewportIsPortable } = useSelector((state: RootState) => state.ui);
+
+    const imgStyle = {
+        ...styles.logoImg,
+        padding: viewportIsPortable ? 0 : '0 1rem',
+    }
 
     return (
         <header style={styles.header}>
             <div style={styles.container}>
                 <div style={styles.logoContainer}>
-                    <Image src={logoUrl} alt="Logo" style={styles.logoImg} />
+                    <Image src={logoUrl} alt="Logo" style={imgStyle} />
                     <div style={styles.smallContainer}>
                         {!viewportIsVertical && (
                             <div style={styles.smallCntnr}>

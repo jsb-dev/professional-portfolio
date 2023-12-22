@@ -20,7 +20,9 @@ const styles: Record<string, React.CSSProperties> = {
     header: {
         fontSize: '18pt',
         fontWeight: 600,
-        padding: '0 1rem',
+        height: 0,
+        margin: 0,
+        padding: 0,
         textAlign: 'center' as 'center',
     }
 }
