@@ -10,11 +10,14 @@ const names = {
     jsbDevV1: 'jsb-dev v1'
 }
 
-const urls = {
+export const urls = {
     diat: 'https://diat.vercel.app',
     applicate: 'https://applicate.vercel.app',
     jsbDev: 'https://jsbdev.vercel.app',
     jsbDevV1: 'https://jsb-dev.vercel.app',
+    github: 'https://github.com/jsb-dev/',
+    linkedin: 'https://www.linkedin.com/in/jacob-booth-1a9390233/',
+    email: 'mailto:jsb-dev@outlook.com',
 }
 
 const desc = {
@@ -50,5 +53,3 @@ export const projects = [
     projectLink: urls.jsbDevV1
   },
 ];
-
-export default projects;

@@ -10,11 +10,14 @@ import SkillsSection from '@/sections/SkillsSection';
 import ProjectSection from '@/sections/PortfolioSection';
 import AboutMe from '@/dividers/AboutMe';
 import Skills from '@/dividers/Skills';
+import Footer from '@/components/Footer';
 import bgImg from '@/assets/images/bg-img.jpg';
 
 const styles: Record<string, React.CSSProperties> = {
     container: {
         overflow: 'hidden',
+        padding: 0,
+        margin: 0,
     },
     sectionCntnr: {
         ...center,
@@ -49,17 +52,20 @@ const IndexPage: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <div id='page-top' style={styles.container}>
-            <Image src={bgImg} alt="Background image" style={styles.bgImg} priority />
-            <Header />
-            <div style={styles.largeDivider} />
-            <div style={styles.sectionCntnr} ><LogoSection /></div>
-            <div style={styles.sectionCntnr} ><ProjectSection /></div>
-            <div style={styles.sectionCntnr} ><AboutMe /></div>
-            <div style={styles.sectionCntnr} ><ProfileSection /></div>
-            <div style={styles.sectionCntnr} ><Skills /></div>
-            <div style={styles.sectionCntnr} ><SkillsSection /></div>
-        </div>
+        <>
+            <div id='page-top' style={styles.container}>
+                <Image src={bgImg} alt="Background image" style={styles.bgImg} priority />
+                <Header />
+                <div style={styles.largeDivider} />
+                <div style={styles.sectionCntnr} ><LogoSection /></div>
+                <div style={styles.sectionCntnr} ><ProjectSection /></div>
+                <div style={styles.sectionCntnr} ><AboutMe /></div>
+                <div style={styles.sectionCntnr} ><ProfileSection /></div>
+                <div style={styles.sectionCntnr} ><Skills /></div>
+                <div style={styles.sectionCntnr} ><SkillsSection /></div>
+            </div>
+            <Footer />
+        </>
     );
 };
 
