@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { StaticImageData } from 'next/image';
 import { center, btn } from '@/styles/shared';
+import openTo from '@/utils/openTo';
 
 const backgroundColor = 'rgba(0, 0, 0, 0.55)';
 
@@ -177,10 +178,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                     </div>
                 </div>
             )}
-            <a
-                href={projectLink}
-                target="_blank"
-                rel="noopener noreferrer"
+            <a onClick={openTo(projectLink)}
             >
                 <button style={styles.visitBtn}>
                     <div style={{

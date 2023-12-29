@@ -22,17 +22,16 @@ const styles: Record<string, React.CSSProperties> = {
     nav: {
         position: 'fixed',
         top: '5rem',
-        right: '-1.4rem',
+        right: '-1.2rem',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
     },
 
     btn: {
         ...btn,
         ...center,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        boxShadow: 'inset 0 0 0.5rem 0.1rem rgba(255, 255, 255, 0.5)',
+        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
         borderRadius: '0.3rem',
         width: 50,
         height: 50,

@@ -3,8 +3,13 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import Image from 'next/image';
+import openTo from '@/utils/openTo';
 import imageUrl from '@/assets/images/profile.jpg';
 import { center, btn } from '@/styles/shared';
+import { urls } from '@/assets/content/projectContent';
+import emailIcon from '@/assets/icons/email_icon.svg'
+import githubIcon from '@/assets/icons/github_icon.svg'
+import linkedinIcon from '@/assets/icons/linkedin_icon.svg'
 
 const minHeight = 400;
 const padding = 0;
@@ -20,6 +25,7 @@ const styles: Record<string, React.CSSProperties> = {
         width: 'min(85dvw, 600px)',
         minHeight,
         padding,
+        marginTop: '3rem',
     },
 
     imgCntnr: {
@@ -46,6 +52,20 @@ const styles: Record<string, React.CSSProperties> = {
         width: '80%',
         fontSize: '10pt',
     },
+
+    linkCntnr: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '10pt',
+        padding: '1rem 0 0 0',
+        margin: 0,
+    },
+
+    link: {
+        padding: '0 1rem',
+        margin: 0,
+    }
 };
 
 interface ProfileCardProps {
@@ -60,6 +80,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     const profileCntnrStyle = {
         ...styles.profileCntnr,
         flexDirection: viewportIsPortable ? 'column' : 'row' as 'column' | 'row',
+        marginBottom: viewportIsPortable ? '3rem' : '',
     }
 
     const imgStyle = {
@@ -93,8 +114,22 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
             </div>
             <div ref={profileCntnrRef} className={cntntAnimation} style={textCntnrStyle}>
                 <h3 style={styles.profileHeader}>JACOB BOOTH</h3>
-                <p style={styles.profileDesc}>Full Stack Developer,<br />Multimedia Specialist</p>
-                <button style={btn}>Contact</button>
+                <p style={styles.profileDesc}>Full Stack Dev<br />React Spec<br />Multimedia Prod</p>
+                <button style={{ ...btn, width: 150 }}>RESUME</button>
+                <div>
+                    <div style={styles.linkCntnr}>
+                        <Image src={emailIcon.src} alt="An icon of the @ symbol" width={20} height={20} />
+                        <a onClick={openTo(`${urls.email}`)} style={styles.link}>jsb-dev@outlook.com</a>
+                    </div>
+                    <div style={styles.linkCntnr}>
+                        <Image src={linkedinIcon.src} alt="An icon of the github logo" width={20} height={20} />
+                        <a onClick={openTo(`${urls.linkedin}`)} style={styles.link}>Jacob Booth</a>
+                    </div>
+                    <div style={styles.linkCntnr}>
+                        <Image src={githubIcon.src} alt="An icon of the github logo" width={20} height={20} />
+                        <a onClick={openTo(`${urls.github}`)} style={styles.link}>jsb-dev</a>
+                    </div>
+                </div>
             </div>
         </div>
     );

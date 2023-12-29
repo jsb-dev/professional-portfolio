@@ -8,6 +8,10 @@
   color: #fff;
 }
 
+#__next {
+  padding: 0;
+}
+
 body {
   background-color: rgb(20, 20, 20);
 }
@@ -43,10 +47,20 @@ h2:after,
 h3:after {
   content: '';
   display: block;
-  padding: 0;
   margin: 1rem 0;
+  padding: 0;
   width: 100%;
   height: 1px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.skill-topic:after {
+  content: '';
+  display: block;
+  margin: 1rem;
+  padding: 0;
+  height: 1px;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -64,19 +78,26 @@ h4 {
   text-transform: uppercase;
 }
 
-h5,
-h6,
 p,
-span,
-button {
+span {
   font-size: 12pt;
   font-weight: 500;
   font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
+h5,
+h6 {
+  font-size: 10pt;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+
 small {
   font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 200;
+  font-size: 8pt;
+  margin: 2px 0;
 }
 
 h1,
@@ -90,7 +111,27 @@ p {
   padding: 0.5rem 0;
 }
 
+a {
+  color: rgb(127, 200, 152);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 10pt;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.3s ease-in-out;
+  margin: 0.5rem;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  color: rgb(50, 128, 184);
+  cursor: pointer;
+}
+
 button {
+  font-size: 10pt;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 300;
   transition: all 0.3s ease-in-out;
 }
 

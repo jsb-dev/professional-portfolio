@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 
@@ -90,7 +93,7 @@ const SkillTopic: React.FC<SkillTopicProps> = ({
                 <Image src={svg} alt="Breakdown" style={svgStyle}
                 ></Image>
             </div>
-            <div style={descCntnrStyle}>
+            <div className='skill-topic' style={descCntnrStyle}>
                 <h4 style={textStyle}>{header}</h4>
                 <p style={textStyle}>{description}</p>
             </div>

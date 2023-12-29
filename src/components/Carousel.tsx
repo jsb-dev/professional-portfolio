@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import ProjectCard from './ProjectCard';
-import projects from '@/assets/content/projectContent';
+import { projects } from '@/assets/content/projectContent';
 
 const styles: Record<string, React.CSSProperties> = {
     carouselCntnr: {

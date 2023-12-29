@@ -62,18 +62,18 @@ const SkillsSection: React.FC = () => {
 
     const fadeIn1 = animatedElements['ssCntnr1Ref'] ? 'fade-in' : 'blank';
     const fadeIn2 = animatedElements['ssCntnr2Ref'] ? 'fade-in' : 'blank';
-    const transitionUp1 = animatedElements['ssRef1'] ? 'transition-right' : 'blank';
-    const transitionUp2 = animatedElements['ssRef2'] ? 'transition-left' : 'blank';
-    const transitionUp3 = animatedElements['ssRef3'] ? 'transition-right' : 'blank';
-    const transitionUp4 = animatedElements['ssRef4'] ? 'transition-left' : 'blank';
-    const transitionUp5 = animatedElements['ssRef5'] ? 'transition-right' : 'blank';
-    const transitionUp6 = animatedElements['ssRef6'] ? 'transition-left' : 'blank';
+    const transitionRight1 = animatedElements['ssRef1'] ? 'transition-right stretch' : 'blank';
+    const transitionRight2 = animatedElements['ssRef2'] ? 'transition-left stretch' : 'blank';
+    const transitionRight3 = animatedElements['ssRef3'] ? 'transition-right stretch' : 'blank';
+    const transitionRight4 = animatedElements['ssRef4'] ? 'transition-left stretch' : 'blank';
+    const transitionRight5 = animatedElements['ssRef5'] ? 'transition-right stretch' : 'blank';
+    const transitionRight6 = animatedElements['ssRef6'] ? 'transition-left stretch' : 'blank';
 
     return (
         <>
             <section id='skills-section' ref={ssCntnr1Ref} className={fadeIn1} style={styles.sectionCntnrBg}>
                 <h2 style={styles.h2}>SKILLS</h2>
-                <div ref={ssRef1} className={transitionUp1} style={styles.topicContainer}>
+                <div ref={ssRef1} className={transitionRight1} style={styles.topicContainer}>
                     <SkillTopic
                         header='An analytical approach'
                         description='A problem without context has no solution. Understanding the scope and nuance of a problem creates the scaffolding for an efficient, effective solution.'
@@ -83,7 +83,7 @@ const SkillsSection: React.FC = () => {
                         viewportIsPortable={viewportIsPortable}
                     />
                 </div>
-                <div ref={ssRef2} className={transitionUp2} style={styles.topicContainer}>
+                <div ref={ssRef2} className={transitionRight2} style={styles.topicContainer}>
 
                     <SkillTopic
                         header='Structured problem-solving'
@@ -93,7 +93,7 @@ const SkillsSection: React.FC = () => {
                         viewportIsPortable={viewportIsPortable}
                     />
                 </div>
-                <div ref={ssRef3} className={transitionUp3} style={styles.topicContainer}>
+                <div ref={ssRef3} className={transitionRight3} style={styles.topicContainer}>
 
                     <SkillTopic
                         header='Fundamental understanding'
@@ -106,7 +106,7 @@ const SkillsSection: React.FC = () => {
                 </div>
             </section>
             <section ref={ssCntnr2Ref} className={fadeIn2} style={section}>
-                <div ref={ssRef4} className={transitionUp4} style={styles.topicContainer}>
+                <div ref={ssRef4} className={transitionRight4} style={styles.topicContainer}>
 
                     <SkillTopic
                         header='All bases covered'
@@ -116,7 +116,7 @@ const SkillsSection: React.FC = () => {
                         viewportIsPortable={viewportIsPortable}
                     />
                 </div>
-                <div ref={ssRef5} className={transitionUp5} style={styles.topicContainer}>
+                <div ref={ssRef5} className={transitionRight5} style={styles.topicContainer}>
 
                     <SkillTopic
                         header='SEO, accessibility, and performance'
@@ -127,7 +127,7 @@ const SkillsSection: React.FC = () => {
                         viewportIsPortable={viewportIsPortable}
                     />
                 </div>
-                <div ref={ssRef6} className={transitionUp6} style={styles.topicContainer}>
+                <div ref={ssRef6} className={transitionRight6} style={styles.topicContainer}>
 
                     <SkillTopic
                         header='Modern practices'
