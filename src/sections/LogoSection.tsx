@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import logoUrl from '@/assets/images/logo.png';
@@ -52,7 +51,7 @@ const LogoSection: React.FC = () => {
 
     return (
         <section style={styles.sectionCntnr}>
-            <Image src={logoUrl} alt="The JSB-DEV Logo, written with a cyberpunk-inspired font, in front of a glowing, circular icon." style={logoStyle} />
+            <img src={logoUrl.src} alt="The JSB-DEV Logo, written with a cyberpunk-inspired font, in front of a glowing, circular icon." style={logoStyle} />
             <div style={headerCntnrStyle}>
                 <h4 style={{
                     ...headerStyle,

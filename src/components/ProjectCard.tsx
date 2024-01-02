@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { StaticImageData } from 'next/image';
@@ -206,8 +205,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                         </div>
                     </button>
                 )}
-                <Image
-                    src={img}
+                <img
+                    src={img.src}
                     alt={projectName}
                     style={styles.img}
                 />
