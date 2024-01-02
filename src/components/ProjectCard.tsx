@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import InfoIcon from '@/assets/icons/InfoIcon';
-import CloseIcon from '@/assets/icons/CloseIcon';
-import VisitIcon from '@/assets/icons/visit_icon.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { StaticImageData } from 'next/image';
 import { center, btn } from '@/styles/shared';
 import openTo from '@/utils/openTo';
+import InfoIcon from '@/assets/icons/InfoIcon';
+import CloseIcon from '@/assets/icons/CloseIcon';
+import VisitIcon from '../../public/assets/icons/visit_icon.svg';
+import PlayIcon from '../../public/assets/icons/play_icon.svg';
 
 const backgroundColor = 'rgba(0, 0, 0, 0.55)';
 
@@ -45,8 +46,15 @@ const styles: Record<string, React.CSSProperties> = {
 
     visitBtn: {
         ...styledBtn,
-        bottom: 0,
+        bottom: '1rem',
         right: 0,
+        zIndex: 1,
+    },
+
+    playBtn: {
+        ...styledBtn,
+        bottom: '1rem',
+        right: '3.5rem',
         zIndex: 1,
     },
 
@@ -89,8 +97,42 @@ const styles: Record<string, React.CSSProperties> = {
         fontSize: '18pt',
         textTransform: 'uppercase',
         letterSpacing: '0.3rem',
-        lineHeight: '2.5rem',
+        lineHeight: '1rem',
     },
+
+    modal: {
+        ...center,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        zIndex: 1000,
+        padding: 0,
+    },
+
+    modalContent: {
+        ...center,
+        borderRadius: '0.5rem',
+        overflow: 'hidden',
+        width: '80%',
+        padding: 0,
+    },
+
+    closeModalBtn: {
+        ...btn,
+        position: 'fixed',
+        top: '1rem',
+        right: '1rem',
+        border: 'none',
+        padding: 0,
+        margin: 0,
+        width: 50,
+        backgroundColor: 'transparent',
+        cursor: 'pointer',
+    }
+
 }
 
 interface ProjectCardProps {
@@ -98,15 +140,21 @@ interface ProjectCardProps {
     description: string;
     projectName: string;
     projectLink: string;
+    videoId: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName, projectLink }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName, projectLink, videoId }) => {
     const [view, setView] = useState<'image' | 'description'>('image');
     const [isHovered, setIsHovered] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const { viewportIsPortable, viewportIsVertical } = useSelector((state: RootState) => state.ui);
 
     const toggleView = () => {
         setView(view === 'image' ? 'description' : 'image');
+    };
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
     };
 
     const onHover = () => {
@@ -120,7 +168,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
     const cardCntnrStyle = {
         ...styles.cardCntnr,
         ...(isHovered && view === 'image' ? {
-            boxShadow: '0 0 1rem 0.1rem rgba(255, 255, 255, 0.3), inset 0 0 1rem 0.1rem rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 0 1rem 0.1rem rgba(255, 255, 255, 0.2), inset 0 0 1rem 0.1rem rgba(255, 255, 255, 0.2)',
         } : {}),
     };
 
@@ -134,6 +182,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
         textAlign: viewportIsPortable ? 'center' : 'right' as 'center' | 'right',
     }
 
+    const modalContentStyle = {
+        ...styles.modalContent,
+        height: viewportIsVertical && viewportIsPortable ? 'auto' : '80%',
+    }
+
     return (
         <div
             style={cardCntnrStyle}
@@ -141,14 +194,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
             onMouseLeave={onLeave}
         >            {view === 'image' && (
             <>
-                {((viewportIsPortable && viewportIsVertical) || (!viewportIsPortable)) && (<button
-                    style={styles.toggleBtn}
-                    onClick={toggleView}
-                >
-                    <div style={styles.iconCntnr}>
-                        <InfoIcon />
-                    </div>
-                </button>)}
+                {((viewportIsPortable && viewportIsVertical) || (!viewportIsPortable)) && (
+
+
+                    <button
+                        style={styles.toggleBtn}
+                        onClick={toggleView}
+                    >
+                        <div style={styles.iconCntnr}>
+                            <InfoIcon />
+                        </div>
+                    </button>
+                )}
                 <Image
                     src={img}
                     alt={projectName}
@@ -178,6 +235,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                     </div>
                 </div>
             )}
+            <button onClick={toggleModal} style={styles.playBtn}>
+                <div style={{
+                    ...styles.iconCntnr,
+                    backgroundImage: `url(${PlayIcon.src})`,
+                    backgroundSize: '70%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+
+                }}>
+                </div>
+            </button>
             <a onClick={openTo(projectLink)}
             >
                 <button style={styles.visitBtn}>
@@ -192,6 +260,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                     </div>
                 </button>
             </a>
+            {isModalOpen && (
+                <div style={styles.modal}>
+                    <div style={modalContentStyle}>
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src={`https://www.youtube.com/embed/${videoId}`}
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                        <button onClick={toggleModal} style={styles.closeModalBtn}>
+                            <CloseIcon />
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

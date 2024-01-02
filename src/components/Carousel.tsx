@@ -42,6 +42,7 @@ const Carousel: React.FC = () => {
                         description={project.description}
                         projectName={project.projectName}
                         projectLink={project.projectLink}
+                        videoId={project.videoId}
                     />
                 ))}
             </div>

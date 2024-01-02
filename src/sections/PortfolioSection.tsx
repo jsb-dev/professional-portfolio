@@ -8,7 +8,7 @@ const styles: Record<string, React.CSSProperties> = {
     section: {
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
         width: '100%',
-        height: '100dvh',
+        minHeight: '100dvh',
         padding: 0,
         border: 'solid 1px rgba(255, 255, 255, 0.6)',
         boxShadow: '0 0 1rem 0.1rem rgba(255, 255, 255, 0.6)',

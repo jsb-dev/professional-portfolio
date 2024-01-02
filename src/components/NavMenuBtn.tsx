@@ -3,11 +3,11 @@ import { center } from '@/styles/shared';
 import { btn } from '@/styles/shared';
 import MenuIcon from '@/assets/icons/MenuIcon';
 import CloseIcon from '@/assets/icons/CloseIcon';
-import topIcon from '@/assets/icons/back_to_top_icon.svg';
-import cntctIcon from '@/assets/icons/contact_icon.svg';
-import prflIcon from '@/assets/icons/profile_icon.svg';
-import prtflioIcon from '@/assets/icons/portfolio_icon.svg';
-import skillsIcon from '@/assets/icons/skills_icon.svg';
+import topIcon from '../../public/assets/icons/back_to_top_icon.svg';
+import cntctIcon from '../../public/assets/icons/contact_icon.svg';
+import prflIcon from '../../public/assets/icons/profile_icon.svg';
+import prtflioIcon from '../../public/assets/icons/portfolio_icon.svg';
+import skillsIcon from '../../public/assets/icons/skills_icon.svg';
 
 const styles: Record<string, React.CSSProperties> = {
     modal: {

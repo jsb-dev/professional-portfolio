@@ -4,12 +4,12 @@ import { RootState } from '@/redux/store';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import SkillTopic from '@/components/SkillTopic';
 import { center } from '@/styles/shared';
-import breakdown from '@/assets/svg/breakdown.svg';
-import analytical from '@/assets/svg/analytical.svg';
-import html from '@/assets/svg/html.svg';
-import laptop from '@/assets/svg/laptop.svg';
-import mobile from '@/assets/svg/mobile.svg';
-import react from '@/assets/svg/react.svg';
+import breakdown from '../../public/assets/svg/breakdown.svg';
+import analytical from '../../public/assets/svg/analytical.svg';
+import html from '../../public/assets/svg/html.svg';
+import laptop from '../../public/assets/svg/laptop.svg';
+import mobile from '../../public/assets/svg/mobile.svg';
+import react from '../../public/assets/svg/react.svg';
 
 const section = {
     ...center,
