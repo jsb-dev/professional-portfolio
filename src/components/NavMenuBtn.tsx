@@ -78,9 +78,6 @@ const NavMenuBtn = () => {
                         <button style={styles.btn} onClick={() => scrollToSection('skills-section')}>
                             <img src={skillsIcon.src} alt="skills" style={styles.icon} />
                         </button>
-                        <button style={styles.btn} onClick={() => scrollToSection('contact-section')}>
-                            <img src={cntctIcon.src} alt="Contact" style={styles.icon} />
-                        </button>
                     </nav>
                 </div>
             )}

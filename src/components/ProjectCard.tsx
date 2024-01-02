@@ -272,7 +272,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ img, description, projectName
                             allowFullScreen
                         ></iframe>
                         <button onClick={toggleModal} style={styles.closeModalBtn}>
-                            <CloseIcon />
+                            <CloseIcon color={true} />
                         </button>
                     </div>
                 </div>
