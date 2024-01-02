@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import Image from 'next/image';
 import openTo from '@/utils/openTo';
 import { center, btn } from '@/styles/shared';
 import { urls } from '@/assets/content/projectContent';
@@ -115,7 +114,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     return (
         <div ref={profileCntnrRef} className={cntnrAnimation} style={profileCntnrStyle} >
             <div style={imgCntnrStyle}>
-                <Image src={imageUrl} alt="A photo of Jacob within a circle headshot frame" style={imgStyle} />
+                <img src={imageUrl.src} alt="A photo of Jacob within a circle headshot frame" style={imgStyle} />
             </div>
             <div ref={profileCntnrRef} className={cntntAnimation} style={textCntnrStyle}>
                 <h3 style={styles.profileHeader}>JACOB BOOTH</h3>
@@ -124,15 +123,15 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
                 <a href="/Jacob Booth.pdf" download style={{ display: 'none' }} ref={downloadRef}></a>
                 <div>
                     <div style={styles.linkCntnr}>
-                        <Image src={emailIcon.src} alt="An icon of the @ symbol" width={20} height={20} />
+                        <img src={emailIcon.src} alt="An icon of the @ symbol" width={20} height={20} />
                         <a onClick={openTo(`${urls.email}`)} style={styles.link}>jsb-dev@outlook.com</a>
                     </div>
                     <div style={styles.linkCntnr}>
-                        <Image src={linkedinIcon.src} alt="An icon of the LinkedIn logo" width={20} height={20} />
+                        <img src={linkedinIcon.src} alt="An icon of the LinkedIn logo" width={20} height={20} />
                         <a onClick={openTo(`${urls.linkedin}`)} style={styles.link}>Jacob Booth</a>
                     </div>
                     <div style={styles.linkCntnr}>
-                        <Image src={githubIcon.src} alt="An icon of the GitHub logo" width={20} height={20} />
+                        <img src={githubIcon.src} alt="An icon of the GitHub logo" width={20} height={20} />
                         <a onClick={openTo(`${urls.github}`)} style={styles.link}>jsb-dev</a>
                     </div>
                 </div>

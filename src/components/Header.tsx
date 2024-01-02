@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
-import Image from 'next/image';
 import logoUrl from '@/assets/images/logo.png';
 import NavMenuBtn from './NavMenuBtn';
 
@@ -73,7 +72,7 @@ const Header: React.FC = () => {
         <header style={styles.header}>
             <div style={styles.container}>
                 <div style={styles.logoCntnr}>
-                    <Image src={logoUrl} alt="Logo" style={imgStyle} />
+                    <img src={logoUrl.src} alt="Logo" style={imgStyle} />
                     <div style={styles.smallContainer}>
                         {!viewportIsVertical && (
                             <div style={styles.smallCntnr}>
