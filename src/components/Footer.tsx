@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import openTo from '@/utils/openTo';
-import { center, btn } from '@/styles/shared';
+import { center } from '@/styles/shared';
 import { urls } from '@/assets/content/projectContent';
 
 const styles: Record<string, React.CSSProperties> = {

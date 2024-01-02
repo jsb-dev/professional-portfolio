@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
-import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import React from 'react';
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 

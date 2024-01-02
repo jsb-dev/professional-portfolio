@@ -17,8 +17,7 @@ const styles: Record<string, React.CSSProperties> = {
         width: '100%',
         backgroundColor: 'rgba(0,0,0,0.9)',
         color: '#ffffff',
-        border: '0.1rem solid rgba(255, 255, 255, 0.3)',
-        boxShadow: 'inset 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.2), inset 0 15px 2rem 1rem rgba(0, 0, 0, 0.9)',
+        boxShadow: 'inset 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.2), inset 0 15px 2rem 1rem rgba(0, 0, 0, 0.9), 0 15px 3rem 0.1rem rgba(255, 255, 255, 0.2)',
     },
     container: {
         display: 'flex',
@@ -28,7 +27,7 @@ const styles: Record<string, React.CSSProperties> = {
         width: '100%',
         padding: '0 1rem',
     },
-    logoContainer: {
+    logoCntnr: {
         display: 'flex',
         alignItems: 'center',
     },
@@ -45,6 +44,7 @@ const styles: Record<string, React.CSSProperties> = {
         textAlign: 'left' as 'left',
         letterSpacing: '0.1rem',
         padding: '0',
+        lineHeight: '0.7rem',
     },
     logoText: {
         fontSize: '1.5rem',
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
     return (
         <header style={styles.header}>
             <div style={styles.container}>
-                <div style={styles.logoContainer}>
+                <div style={styles.logoCntnr}>
                     <Image src={logoUrl} alt="Logo" style={imgStyle} />
                     <div style={styles.smallContainer}>
                         {!viewportIsVertical && (
