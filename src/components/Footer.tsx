@@ -33,6 +33,12 @@ const styles: Record<string, React.CSSProperties> = {
         justifyContent: 'flex-start',
         height: '100%',
     },
+
+    small: {
+        padding: '0.5rem',
+        textAlign: 'center',
+        wordBreak: 'break-word',
+    }
 };
 
 
@@ -45,7 +51,8 @@ const SiteFooter: React.FC = () => {
             <div style={{ ...styles.gridContainer, gridTemplateColumns: `repeat(${gridSize}, 1fr)` }}>
                 <div style={styles.gridItem}>
                     <h6 style={styles.footerHeading}>Designer & Developer</h6>
-                    <small>Jacob Booth</small>
+                    <small style={styles.small}>Jacob Booth</small>
+                    <small style={styles.small}>jsb-dev@outlook.com</small>
                 </div>
 
                 <div style={styles.gridItem}>
@@ -64,7 +71,6 @@ const SiteFooter: React.FC = () => {
                     <h6 style={styles.footerHeading}>Connect</h6>
                     <a onClick={openTo(urls.github)}>GitHub</a>
                     <a onClick={openTo(urls.linkedin)}>LinkedIn</a>
-                    <a onClick={openTo(urls.email)}>Email</a>
                 </div>
             </div>
         </footer>
