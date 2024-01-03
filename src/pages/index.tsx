@@ -56,7 +56,7 @@ const IndexPage: React.FC = () => {
         <>
             <Head>
                 <title>JSB-DEV</title>
-                <meta name="description" content="A portfolio website for JSB-DEV, a full-stack web developer based in the UK." />
+                <meta name="description" content="A portfolio website for JSB-DEV, a full-stack web developer based in Melbourne, Australia." />
                 <meta name="keywords" content="JSB-DEV, JSB, DEV, portfolio, web developer, full-stack, full stack, fullstack, web, developer, programmer, coding, coding portfolio, portfolio website, website, web developer portfolio, web developer portfolio website, web developer portfolio" />
             </Head>
             <div id='page-top' style={styles.container}>
