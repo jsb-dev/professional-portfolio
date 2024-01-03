@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateLayout } from '@/redux/slices/uiSlice';
 import Image from 'next/image';
+import Head from 'next/head';
 import { center } from '@/styles/shared';
 import Header from '@/components/Header';
 import LogoSection from '@/sections/LogoSection';
@@ -53,6 +54,11 @@ const IndexPage: React.FC = () => {
 
     return (
         <>
+            <Head>
+                <title>JSB-DEV</title>
+                <meta name="description" content="A portfolio website for JSB-DEV, a full-stack web developer based in the UK." />
+                <meta name="keywords" content="JSB-DEV, JSB, DEV, portfolio, web developer, full-stack, full stack, fullstack, web, developer, programmer, coding, coding portfolio, portfolio website, website, web developer portfolio, web developer portfolio website, web developer portfolio" />
+            </Head>
             <div id='page-top' style={styles.container}>
                 <Image src={bgImg} alt="Background image" style={styles.bgImg} priority />
                 <Header />
