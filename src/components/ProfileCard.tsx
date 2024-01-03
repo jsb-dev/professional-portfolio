@@ -22,9 +22,9 @@ const styles: Record<string, React.CSSProperties> = {
         border: '0.1rem solid rgba(255, 255, 255, 0.3)',
         textAlign: 'center' as 'center',
         width: 'min(85dvw, 600px)',
+        marginTop: '3rem',
         minHeight,
         padding,
-        marginTop: '3rem',
     },
 
     imgCntnr: {
@@ -84,7 +84,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     const profileCntnrStyle = {
         ...styles.profileCntnr,
         flexDirection: viewportIsPortable ? 'column' : 'row' as 'column' | 'row',
-        marginBottom: viewportIsPortable ? '3rem' : '',
+        marginBottom: viewportIsPortable ? '3rem' : 0,
     }
 
     const imgStyle = {
@@ -94,8 +94,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
 
     const orientation = {
         width: viewportIsPortable ? '90%' : '50%',
-        minHeight: viewportIsPortable ? '' : minHeight,
-        padding: viewportIsPortable ? '1rem' : '',
+        minHeight: viewportIsPortable ? '100px' : minHeight,
+        padding: viewportIsPortable ? '1rem' : 0,
     }
 
     const imgCntnrStyle = {
@@ -114,7 +114,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ viewportIsPortable }) => {
     return (
         <div ref={profileCntnrRef} className={cntnrAnimation} style={profileCntnrStyle} >
             <div style={imgCntnrStyle}>
-                <img src={imageUrl.src} alt="A photo of Jacob within a circle headshot frame" style={imgStyle} />
+                <img src={imageUrl.src} alt="A photo of Jacob within a circular headshot frame" style={imgStyle} />
             </div>
             <div ref={profileCntnrRef} className={cntntAnimation} style={textCntnrStyle}>
                 <h3 style={styles.profileHeader}>JACOB BOOTH</h3>
