@@ -13,7 +13,7 @@ const styles: Record<string, React.CSSProperties> = {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         borderRadius: 0,
         width: '100%',
-        minHeight: '25rem',
+        height: '25rem',
     },
 
     gridContainer: {
